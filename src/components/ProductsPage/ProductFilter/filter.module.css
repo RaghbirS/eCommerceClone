@@ -16,6 +16,7 @@
     flex-direction: column;
     width: 100%;
     overflow: hidden;
+    flex-shrink: 0;
 }
 .FFilter input{
     width: 100%;
