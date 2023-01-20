@@ -1,5 +1,6 @@
 import React from 'react'
 import SimpleImageSlider from "react-simple-image-slider";
+import Cards from '../../Frontpage/Cards Grid/Cards';
 const images = [
   { url:"https://assets0.mirraw.com/banner_sliders/10031/05_%281%29_main_webp.webp?1674107278%22%7D"},
   { url: "https://assets0.mirraw.com/banner_sliders/10027/01_%281%29_main_webp.webp?1674107117" },
@@ -23,4 +24,5 @@ const Carousel = () => {
     </div>
   );
 }
+
 export default Carousel
