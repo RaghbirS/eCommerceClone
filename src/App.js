@@ -22,8 +22,9 @@ function App() {
         <Route path='/Luxe' element={<p>Luxe</p>}></Route>
         <Route path='/Spiritual' element={<p>Spiritual</p>}></Route>
         <Route path='/Collections' element={<p>Collections</p>}></Route>
+        <Route path='/' element={<Frontpage />}></Route>
       </Routes>
-      <Frontpage />
+      
       <Footer />
     </>
   );
