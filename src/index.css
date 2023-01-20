@@ -95,3 +95,23 @@ body {
 .navHove11:hover #navHo11{
   display: flex;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(198, 198, 198);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #670b19;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #440a13;
+}

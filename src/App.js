@@ -2,8 +2,8 @@ import './App.css';
 import Navbar from './components/navbar/navbar';
 import { Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer';
-
 import Frontpage from './components/Frontpage/Frontpage';
+import Products from './components/ProductsPage/Products';
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path='/saree' element={<p>Saree</p>}></Route>
+        <Route path='/saree' element={<Products />}></Route>
         <Route path='/Lehengas' element={<p>Lehengas</p>}></Route>
         <Route path='/SalwarKameez' element={<p>SalwarKameez</p>}></Route>
         <Route path='/Kurtis' element={<p>Kurtis</p>}></Route>
@@ -23,7 +23,7 @@ function App() {
         <Route path='/Spiritual' element={<p>Spiritual</p>}></Route>
         <Route path='/Collections' element={<p>Collections</p>}></Route>
       </Routes>
-      <Frontpage/>
+      <Frontpage />
       <Footer />
     </>
   );
