@@ -11,7 +11,7 @@ export default function Expand(){
             A large majority of Indian clothing for men and women has evolved from garments like langota, lungi, sari, gamcha, and dhoti. India is the second most populous country in the world and it shows great diversity in its population as well. Clothing in India is greatly influenced by the religion people follow.
             </Box>
 
-   <Accordion defaultIndex={[0]} allowMultiple >
+   <Accordion defaultIndex={[false]} allowMultiple >
   <AccordionItem>
     <h2>
       <AccordionButton p="0">
