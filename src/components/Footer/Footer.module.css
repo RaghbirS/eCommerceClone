@@ -1,0 +1,20 @@
+ul{
+    display: flex;
+}
+
+li{
+    margin: 0 1px;
+    color: black;
+}
+li:not(li:nth-of-type(5)){
+    border: 1px solid white;
+    width: 30px;
+    height: 30px;
+}
+li:nth-of-type(1){
+    list-style: none;
+}
+
+.topScroll{
+    bottom: 0;
+}

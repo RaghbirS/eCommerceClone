@@ -1,0 +1,22 @@
+.marginNav{
+    font-size: 11px;
+}
+.marginNav span{
+    margin: 0px 5px;
+}
+.fill svg{
+    fill:#670b19;
+}
+.giveSty *{
+    font-size: 13.5px;
+    font-weight: 500;
+}
+.giveSty>div{
+    padding: 9px 10px;
+    font-size: 13.5px;
+    font-weight: 500;
+    border-bottom: 3px solid white;
+}
+.giveSty>div:hover{
+    border-bottom: 3px solid #670b19;
+}
