@@ -2,10 +2,10 @@ import './App.css';
 import Navbar from './components/navbar/navbar';
 import { Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer';
-import MyCarousel from './components/Features/Carousel/Carousel';
 import SignUpdate from './components/Frontpage/Signup-Updates/signUpdate';
 import Expand from './components/Frontpage/Expanding Section/expand';
 import { BigGrid } from './components/Frontpage/BigPicGrid/BigGrid';
+import Carousel from './components/Features/Carousel/Carousel';
 
 function App() {
 
@@ -25,10 +25,10 @@ function App() {
         <Route path='/Spiritual' element={<p>Spiritual</p>}></Route>
         <Route path='/Collections' element={<p>Collections</p>}></Route>
       </Routes>
+      <Carousel />
       <BigGrid />
       <Expand />
       <SignUpdate />
-      <MyCarousel />
       <Footer />
     </>
   );

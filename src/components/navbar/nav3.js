@@ -21,45 +21,46 @@ export default function Nav3() {
                     <Navdrop1 />
                 </Box>
                 <Box className="navHove2" >
-                    <NavLink to="/Lehengas">Lehengas</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Lehengas</NavLink>
                     <Navdrop2 />
                 </Box>
                 <Box className="navHove3" >
-                    <NavLink to="/Lehengas">SalwarKameez</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">SalwarKameez</NavLink>
                     <Navdrop3 />
                 </Box>
                 <Box className="navHove4" >
-                    <NavLink to="/Lehengas">Kurtis</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Kurtis</NavLink>
                     <Navdrop4 />
                 </Box>
                 <Box className="navHove5" >
-                    <NavLink  to="/Lehengas">Jewellery</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Jewellery</NavLink>
                     <Navdrop5 />
                 </Box>
                 <Box className="navHove6" >
-                    <NavLink to="/Lehengas">Kids</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Kids</NavLink>
                     <Navdrop6 />
                 </Box>
                 <Box className="navHove7" >
-                    <NavLink to="/Lehengas">Men</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Men</NavLink>
                     <Navdrop7 />
                 </Box>
                 <Box className="navHove8" >
-                    <NavLink to="/Lehengas">Home & Living</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Home & Living</NavLink>
                     <Navdrop8 />
                 </Box>
                 <Box className="navHove9" >
-                    <NavLink to="/Lehengas">Luxe</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Luxe</NavLink>
                     <Navdrop9 />
                 </Box>
                 <Box className="navHove10" >
-                    <NavLink to="/Lehengas">Spiritual</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Spiritual</NavLink>
                     <Navdrop10 />
                 </Box>
                 <Box className="navHove11" >
-                    <NavLink to="/Lehengas">Collections</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Collections</NavLink>
                     <Navdrop11 />
                 </Box>
+                
             </Flex>
         </Flex>
     )
