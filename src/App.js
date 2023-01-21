@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Footer from './components/Footer/Footer';
 import Frontpage from './components/Frontpage/Frontpage';
 import Products from './components/ProductsPage/Products';
+import SignupCard from './components/Signup/signup';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/saree' element={<Products />}></Route>
+        <Route path='/signup' element={<SignupCard />}></Route>
         <Route path='/Lehengas' element={<p>Lehengas</p>}></Route>
         <Route path='/SalwarKameez' element={<p>SalwarKameez</p>}></Route>
         <Route path='/Kurtis' element={<p>Kurtis</p>}></Route>

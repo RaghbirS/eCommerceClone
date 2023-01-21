@@ -7,7 +7,8 @@ import {
   Center,
   Text,
   Box,
-  Button
+  Button,
+  MenuItem
 } from "@chakra-ui/react";
 import styles from "./nav.module.css";
 export default function Nav1() {
@@ -51,7 +52,7 @@ export default function Nav1() {
         mr="50px"
         width="150px"
       >
-        <Menu>
+        <Menu closeOnBlur={true} closeOnSelect={true}>
           <MenuButton>
             <Flex>
               <Center fontWeight={600}>
@@ -67,6 +68,7 @@ export default function Nav1() {
             </Flex>
           </MenuButton>
           <MenuList>
+            <MenuItem>
             <Box textAlign="center" m="5px">
               <Text>Existing User?</Text>
               <NavLink>
@@ -75,26 +77,33 @@ export default function Nav1() {
                   w="30%"
                   p="3px 60px"
                   bg="rgb(103, 11, 25)"
+                  _hover={{
+                    bg: 'rgb(103, 11, 25)',
+                  }}
                   color="white"
                 >
                   Login
                 </Button>
               </NavLink>
             </Box>
-            <Box textAlign="center" m="5px">
+            </MenuItem>
+            <MenuItem><Box textAlign="center" m="5px">
               <Text>New to Mirraw</Text>
-              <NavLink>
+              <NavLink to="/signup">
                 <Button
                   h="100%"
                   w="30%"
                   p="3px 60px"
                   bg="rgb(103, 11, 25)"
+                  _hover={{
+                    bg: 'rgb(103, 11, 25)',
+                  }}
                   color="white"
                 >
                   Register
                 </Button>
               </NavLink>
-            </Box>
+            </Box></MenuItem>
           </MenuList>
         </Menu>
         {/* <Flex cursor="pointer" justify="center" align="center" width="45%" bg="white" _hover={{background:"white"}}>
