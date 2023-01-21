@@ -71,7 +71,7 @@ export default function Nav1() {
           <MenuItem>
           <Box textAlign="center" m="5px" w="100%" >
               <Text mb={"5px"}>Existing User</Text>
-              <NavLink to="/signup" style={{backgroundColor:"rgb(103, 11, 25)", color:"white",marginTop:"5px", padding:"3px 30px", fontWeight:"600"}}>
+              <NavLink to="/signin" style={{backgroundColor:"rgb(103, 11, 25)", color:"white",marginTop:"5px", padding:"3px 30px", fontWeight:"600"}}>
                   Login
               </NavLink>
             </Box></MenuItem>
