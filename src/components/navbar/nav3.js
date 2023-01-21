@@ -17,11 +17,11 @@ export default function Nav3() {
         <Flex zIndex="1" id="bot" style={{ boxShadow: "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px" }} className={styles.nav3} justify="center" w="100vw" h="40px">
             <Flex className={styles.giveSty} position="relative" align="center">
                 <Box className="navHove1" >
-                    <NavLink  to="/saree">Sarees</NavLink>
+                    <NavLink to="/saree">Sarees</NavLink>
                     <Navdrop1 />
                 </Box>
-                <Box className="navHove2" >
-                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/Lehengas">Lehengas</NavLink>
+                <Box  className="navHove2" >
+                    <NavLink  to="/Lehengas">Lehengas</NavLink>
                     <Navdrop2 />
                 </Box>
                 <Box className="navHove3" >

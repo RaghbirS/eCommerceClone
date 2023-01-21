@@ -12,9 +12,14 @@
     font-weight: 500;
 }
 .giveSty>div>a{
-    padding: 10px 10px;
     font-size: 13.5px;
     cursor: pointer;
     font-weight: 500;
-    border-bottom: 2px solid white;
+}
+.giveSty>div{
+    padding: 8px 10px;
+    border-bottom: 3px solid white;
+}
+.giveSty>div:hover{
+    border-Bottom: 3px solid #670b19;
 }
