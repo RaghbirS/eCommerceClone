@@ -1,5 +1,5 @@
 import FilterReusable from "./filterResuseable"
-import { Text , Flex, Box, Button, Input } from "@chakra-ui/react"
+import { Text , Flex, Box, Button } from "@chakra-ui/react"
 import {
     RangeSlider,
     RangeSliderTrack,
@@ -18,9 +18,9 @@ export default function ProductFilter2() {
                 </Text>
                 <RangeSlider
                     w="80%"
-                    defaultValue={[0, 100]}
+                    defaultValue={[1, 100]}
                     aria-label={['min', 'max']}
-                    onChangeEnd={(val) => {
+                    onChange={(val) => {
                         setVal1(val[0]);
                         setVal2(val[1]);
                     }}
@@ -37,10 +37,10 @@ export default function ProductFilter2() {
                 </Box>
             </Flex>
             <Flex align="center" justify="center" width="100%" position="absolute" top="120px">
-                <input value={val1}></input>
+                <input defaultValue={val1}></input>
                 <Box m="5px"> - </Box>
-                <input value={val2}></input>
-                <Button></Button>
+                <input defaultValue={val2}></input>
+                <Button>GO</Button>
             </Flex>
         </FilterReusable>
     )

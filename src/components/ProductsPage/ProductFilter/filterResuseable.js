@@ -16,7 +16,7 @@ export default function FilterReusable(props) {
     }
     return (
         <div className={styles.FFilter} style={{ height: `${heig}px` }}>
-            <Button onClick={handleBtnClick} position="absolute" w="100%" top="0">{props.name}</Button>
+            <Button bg={"white"} _hover={{background:"white"}} onClick={handleBtnClick} position="absolute" w="100%" top="0">{props.name}</Button>
             {props.children}
         </div>
     )
