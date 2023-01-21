@@ -11,36 +11,36 @@ export default function ProductFilter1() {
                 </svg>
                 <input placeholder="Search Categories" />
             </Flex>
-                <Flex  align="center" flexDir="column" w="100%">
-                    <Flex gap="5px" h="70%" position="absolute" top="85px" overflowY="scroll" w="80%" flexDir="column">
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        <Checkbox>Loremmm</Checkbox>
-                        
-                        </Flex>
-                    </Flex>
+            <Flex align="center" flexDir="column" w="100%">
+                <Flex gap="5px" h="70%" position="absolute" top="85px" overflowY="scroll" w="80%" flexDir="column">
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+                    <Checkbox>Loremmm</Checkbox>
+
+                </Flex>
+            </Flex>
         </FilterReusable>
     )
 }
