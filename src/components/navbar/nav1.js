@@ -68,10 +68,10 @@ export default function Nav1() {
             </Flex>
           </MenuButton>
           <MenuList>
-            <MenuItem>
-            <Box textAlign="center" m="5px">
-              <Text>Existing User?</Text>
-              <NavLink>
+          <MenuItem>
+          <Box textAlign="center" m="5px" w="100%" >
+              <Text>Existing User</Text>
+              <NavLink to="/signup">
                 <Button
                   h="100%"
                   w="30%"
@@ -85,9 +85,9 @@ export default function Nav1() {
                   Login
                 </Button>
               </NavLink>
-            </Box>
-            </MenuItem>
-            <MenuItem><Box textAlign="center" m="5px">
+            </Box></MenuItem>
+            <MenuItem>
+            <Box textAlign="center" m="5px" w="100%">
               <Text>New to Mirraw</Text>
               <NavLink to="/signup">
                 <Button
@@ -103,7 +103,8 @@ export default function Nav1() {
                   Register
                 </Button>
               </NavLink>
-            </Box></MenuItem>
+            </Box>
+            </MenuItem>
           </MenuList>
         </Menu>
         {/* <Flex cursor="pointer" justify="center" align="center" width="45%" bg="white" _hover={{background:"white"}}>
