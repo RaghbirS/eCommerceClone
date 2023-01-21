@@ -7,7 +7,6 @@ import {
   Center,
   Text,
   Box,
-  Button,
   MenuItem
 } from "@chakra-ui/react";
 import styles from "./nav.module.css";
