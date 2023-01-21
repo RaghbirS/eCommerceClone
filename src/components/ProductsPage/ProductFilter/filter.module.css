@@ -3,7 +3,6 @@
     height: 30px;
     border: none;
     background-color: white;
-    border-bottom: 2px solid red;
 }
 .Finput:focus{
     outline: none;
@@ -11,7 +10,8 @@
 .FFilter{
     transition:.3s;
     position: relative;
-    border: 1px solid grey;
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #e6e6e6;
     display: flex;
     flex-direction: column;
     width: 100%;
