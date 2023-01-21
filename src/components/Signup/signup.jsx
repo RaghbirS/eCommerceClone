@@ -63,7 +63,7 @@ import {
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
-              <FormControl id="password" isRequired>
+              <FormControl id="Confirmpassword" isRequired>
                 {/* Confirm Password */}
                 <InputGroup>
                   <Input type={showPassword ? 'text' : 'password'} placeholder="Confirm Password" />

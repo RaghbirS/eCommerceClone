@@ -70,38 +70,16 @@ export default function Nav1() {
           <MenuList>
           <MenuItem>
           <Box textAlign="center" m="5px" w="100%" >
-              <Text>Existing User</Text>
-              <NavLink to="/signup">
-                <Button
-                  h="100%"
-                  w="30%"
-                  p="3px 60px"
-                  bg="rgb(103, 11, 25)"
-                  _hover={{
-                    bg: 'rgb(103, 11, 25)',
-                  }}
-                  color="white"
-                >
+              <Text mb={"5px"}>Existing User</Text>
+              <NavLink to="/signup" style={{backgroundColor:"rgb(103, 11, 25)", color:"white",marginTop:"5px", padding:"3px 30px", fontWeight:"600"}}>
                   Login
-                </Button>
               </NavLink>
             </Box></MenuItem>
             <MenuItem>
             <Box textAlign="center" m="5px" w="100%">
               <Text>New to Mirraw</Text>
-              <NavLink to="/signup">
-                <Flex
-                  h="100%"
-                  w="30%"
-                  p="3px 60px"
-                  bg="rgb(103, 11, 25)"
-                  _hover={{
-                    bg: 'rgb(103, 11, 25)',
-                  }}
-                  color="white"
-                >
+              <NavLink to="/signup" style={{backgroundColor:"rgb(103, 11, 25)", color:"white", padding:"3px 30px", fontWeight:"600"}}>
                   Register
-                </Flex>
               </NavLink>
             </Box>
             </MenuItem>

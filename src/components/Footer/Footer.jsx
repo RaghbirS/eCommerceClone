@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Style from "./Footer.module.css";
 
 import SignUpdate from "../Frontpage/Signup-Updates/signUpdate"
+import { ReviewCarousel } from "../Features/Carousel/Carousel";
 
 export default function Footer(){
     let [vis, setVis] = useState(false)
@@ -17,6 +18,7 @@ export default function Footer(){
     })
     return <>
     <SignUpdate />
+    {/* <ReviewCarousel /> */}
         <Box bg="url('https://www.mirraw.com/assets/footer_bg.png')" h="300px" m="auto" color="white">
             <Center w="100%" h="100%">
                 <Box w="70%" h="auto">
