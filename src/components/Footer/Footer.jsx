@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Grid, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Grid, Image, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Style from "./Footer.module.css";
@@ -50,21 +50,36 @@ export default function Footer(){
                     <Link to="/how">Sell on Mirraw</Link>
                     <Link to="/how">Designer Login</Link>
                 </Flex>
+
+                {/* Coupon Partners and Social Media */}
                 <Flex direction="column" fontSize="xs">
                     <Text fontSize="lg" fontWeight="500" m="6px 0">COUPON PARTNERS</Text>
                     <Link to="/survey">Mirraw Coupons</Link>
                     <Link to="/how">Mirraw Offers</Link>
                     <Text fontSize="lg" fontWeight="500" m="6px 0">SOCIAL</Text>
                     <ul style={Style}>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li><Image src="https://www.mirraw.com/assets/twitter_footer-498ca0718d145a3362056fc77766ab3961a292b10fe3d588f2a1e969f0777417.png" /></li>
+                        <li><Image src="https://www.mirraw.com/assets/fb_footer-ae2f75a25284a2f024d9614a144194ce1bd478e5617f38a49bcc2292b8da9521.png" /></li>
+                        <li><Image src="https://www.mirraw.com/assets/instagram-01a464e128b603d368a3ba64064b79a47432ca603641da1c0308be4306462c4f.png" /></li>
+                        <li><Image src="https://www.mirraw.com/assets/android_footer-26003fe0ae23b4ab11b633697f154996efd4946073bb9d43b7699d201a541a68.png" /></li>
+                        <li><Image src="https://www.mirraw.com/assets/ios_footer-019e5f0e8d65afd830c2d5994d36bc563a894a23bab80f736982e6d33127fc9e.png" /></li>
                         <li></li>
                     </ul>
                 </Flex>
+
+                {/* Press  */}
                 <Flex direction="column" fontSize="xs">
                     <Text fontSize="lg" fontWeight="500" m="6px 0">PRESS</Text>
+                    <Flex>
+                    <Box>
+                    <Image src="https://www.mirraw.com/assets/dna-be0b711232e819d1dfeb542296bf4d56c80cd17c41badb9494300cffe4fe9cf5.png" p="1px" />
+                    <Image src="https://www.mirraw.com/assets/payu-a31ef1db3817ade015c5ad386da4b2211b82dbebcad90964c58e4b7dc889b255.png" p="1px" />
+                    </Box>
+                    <Box>
+                    <Image src="https://www.mirraw.com/assets/yourstory-af15b2ddcc71a01016c6b879d665af554375ace702d94eaa48d0b2210834e0d4.png" p="1px" />
+                    <Image src="https://www.mirraw.com/assets/paypal-449cce1c328ad3e821e482a3795a336b4659a62c892eddb7f5dd095eb5d42a16.png" p="1px" />
+                    </Box>
+                    </Flex>
                 </Flex>
                 
                 </Grid>
