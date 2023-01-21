@@ -11,7 +11,7 @@ export default function Navdrop10() {
       id="navHo10"
       bg="white"
       right="2px"
-      top="41px"
+      top="40px"
       position="absolute"
       w="800px"
       minH="200px"
