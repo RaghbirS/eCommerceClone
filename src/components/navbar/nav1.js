@@ -90,7 +90,7 @@ export default function Nav1() {
             <Box textAlign="center" m="5px" w="100%">
               <Text>New to Mirraw</Text>
               <NavLink to="/signup">
-                <Button
+                <Flex
                   h="100%"
                   w="30%"
                   p="3px 60px"
@@ -101,7 +101,7 @@ export default function Nav1() {
                   color="white"
                 >
                   Register
-                </Button>
+                </Flex>
               </NavLink>
             </Box>
             </MenuItem>
