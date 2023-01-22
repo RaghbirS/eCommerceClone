@@ -32,10 +32,10 @@ export default function Products() {
                 <Grid templateColumns="repeat(4,1fr)" gap="10px" p="10px" w="65vw" minH="200vh">
                     {proData.map((data)=>{
                         if(data["lazy src"]!="" && data["lazy src"]!="https://www.mirraw.com/assets/11-335ed79f82b843135faf5fb751a71911e4512e5999837641a2914b270f7e6935.png"){
-                            return <ProductCard loop={`/products/${da.pro}/${data["listing-title"]}/${data.id}`} key={data.id} title={data["listing-title"]} img={data["lazy src"]}/>
+                            return <ProductCard loop={`/products/${da.pro}/${data["listing-title"]}/${da.pro}/${data.id}`} key={data.id} title={data["listing-title"]} img={data["lazy src"]}/>
                         }
                         else if(data["lazy-custom src"]!="" && data["lazy src"]!="https://www.mirraw.com/assets/11-335ed79f82b843135faf5fb751a71911e4512e5999837641a2914b270f7e6935.png"){
-                            return <ProductCard loop={`/products/${da.pro}/${data["listing-title"]}/${data.id}`} key={data.id} title={data["listing-title"]} img={data["lazy-custom src"]}/>
+                            return <ProductCard loop={`/products/${da.pro}/${data["listing-title"]}/${da.pro}/${data.id}`} key={data.id} title={data["listing-title"]} img={data["lazy-custom src"]}/>
                         }
                     })}
                 </Grid>
