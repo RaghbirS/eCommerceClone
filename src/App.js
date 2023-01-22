@@ -7,6 +7,7 @@ import Products from './components/ProductsPage/Products';
 import SignupCard from './components/Signup/signup';
 import SigninCard from './components/Signup/signin';
 import FAQ from './components/Footer/FooterComponents/faq';
+import BigProduct from './components/ProductsPage/bigProductPage';
 
 function App() {
 
@@ -14,10 +15,11 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path='/saree' element={<Products />}></Route>
+        <Route path='/products/:pro' element={<Products />}></Route>
         <Route path='/signup' element={<SignupCard />}></Route>
         <Route path='/signin' element={<SigninCard />}></Route>
-        <Route path='/Lehengas' element={<p>Lehengas</p>}></Route>
+        <Route path='/products/saree/:id/:idd' element={<BigProduct/>}></Route>
+        {/* <Route path='/Lehengas' element={<p>Lehengas</p>}></Route>
         <Route path='/SalwarKameez' element={<p>SalwarKameez</p>}></Route>
         <Route path='/Kurtis' element={<p>Kurtis</p>}></Route>
         <Route path='/Jewellery' element={<p>Jewellery</p>}></Route>
@@ -26,7 +28,7 @@ function App() {
         <Route path='/Home&Living' element={<p>Home&Living</p>}></Route>
         <Route path='/Luxe' element={<p>Luxe</p>}></Route>
         <Route path='/Spiritual' element={<p>Spiritual</p>}></Route>
-        <Route path='/Collections' element={<p>Collections</p>}></Route>
+        <Route path='/Collections' element={<p>Collections</p>}></Route> */}
         <Route path='/' element={<Frontpage />}></Route>
 
         {/* Footer Routes */}
