@@ -13,6 +13,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalFooter,
+  Button,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
