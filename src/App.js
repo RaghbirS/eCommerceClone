@@ -6,6 +6,7 @@ import Frontpage from './components/Frontpage/Frontpage';
 import Products from './components/ProductsPage/Products';
 import SignupCard from './components/Signup/signup';
 import SigninCard from './components/Signup/signin';
+import FAQ from './components/Footer/FooterComponents/faq';
 
 function App() {
 
@@ -27,6 +28,9 @@ function App() {
         <Route path='/Spiritual' element={<p>Spiritual</p>}></Route>
         <Route path='/Collections' element={<p>Collections</p>}></Route>
         <Route path='/' element={<Frontpage />}></Route>
+
+        {/* Footer Routes */}
+        <Route path='/faq' element={<FAQ />}></Route>
       </Routes>
       
       <Footer />
