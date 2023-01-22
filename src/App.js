@@ -17,8 +17,7 @@ function App() {
         <Route path='/products/:pro' element={<Products />}></Route>
         <Route path='/signup' element={<SignupCard />}></Route>
         <Route path='/signin' element={<SigninCard />}></Route>
-        <Route path='/products/saree/:id/:idd/:iddd' element={<BigProduct/>}></Route>
-        <Route path='*' element={<h1>404 Page Not Found</h1>}></Route>
+        <Route path='/products/:categories/:name/:id' element={<BigProduct/>}></Route>
         {/* <Route path='/Lehengas' element={<p>Lehengas</p>}></Route>
         <Route path='/SalwarKameez' element={<p>SalwarKameez</p>}></Route>
         <Route path='/Kurtis' element={<p>Kurtis</p>}></Route>
