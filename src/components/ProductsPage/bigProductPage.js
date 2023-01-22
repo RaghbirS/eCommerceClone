@@ -45,7 +45,7 @@ export default function BigProduct(props) {
                             rounded={'md'}
                             alt={'product image'}
                             src={
-                                apiData["lazy-custom src"]
+                                apiData["lazy-custom src"]==""?apiData["lazy src"]:apiData["lazy-custom src"]
                             }
                             fit={'cover'}
                             align={'center'}
@@ -58,14 +58,15 @@ export default function BigProduct(props) {
                                 lineHeight={1.1}
                                 fontWeight={600}
                                 fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-                                {data.name}
+                                {data.name.toUpperCase()}
                             </Heading>
-                            <Text
+                            <Flex 
                                 color={useColorModeValue('gray.900', 'gray.400')}
                                 fontWeight={300}
                                 fontSize={'2xl'}>
                                 {apiData["effective-price"]}
-                            </Text>
+                                <Text color={"red"} fontWeight={"600"} ml={"10px"}>{apiData["red-discount-percentage"]}</Text>
+                            </Flex>
                         </Box>
 
                         <Stack
@@ -98,21 +99,11 @@ export default function BigProduct(props) {
                                     fontWeight={'500'}
                                     textTransform={'uppercase'}
                                     mb={'4'}>
-                                    Features
-                                </Text>
-
-                            
-                            </Box>
-                            <Box>
-                                <Text
-                                    fontSize={{ base: '16px', lg: '18px' }}
-                                    color={useColorModeValue('yellow.500', 'yellow.300')}
-                                    fontWeight={'500'}
-                                    textTransform={'uppercase'}
-                                    mb={'4'}>
                                     Product Details
                                 </Text>
+                                <Flex flexDir={"column"}>
 
+                                </Flex>
                                 
                             </Box>
                         </Stack>
