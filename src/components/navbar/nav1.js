@@ -7,13 +7,12 @@ import {
   Center,
   Text,
   Box,
+  Button,
   MenuItem,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
-  Button,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
@@ -142,7 +141,7 @@ export default function Nav1() {
           CART{`(0)`}
         </Flex> 
 
-      <Modal isOpen={isOpen} onClose={onClose} size="4xl" >
+      <Modal isOpen={isOpen} onClose={onClose} size="6xl" >
         <ModalOverlay  />
         <ModalContent h="60vh">
           <ModalHeader bg="rgb(48, 48, 48)" p="10px">

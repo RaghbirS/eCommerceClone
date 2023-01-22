@@ -12,7 +12,7 @@ let cardImgs=["https://assets0.mirraw.com/frontpages/12979/rtru_main_webp.webp?1
 "https://assets0.mirraw.com/frontpages/12986/dewe_main_webp.webp?1673937429", 
 "https://assets0.mirraw.com/frontpages/12987/dew_main_webp.webp?1673937417", 
 "https://assets0.mirraw.com/frontpages/12988/fds_main_webp.webp?1673937399", 
-"https://assets0.mirraw.com/frontpages/12988/fds_main_webp.webp?1673937399", 
+"https://assets0.mirraw.com/frontpages/12989/se_main_webp.webp?1673937343", 
 "https://assets0.mirraw.com/frontpages/12990/df_main_webp.webp?1673937329",
 "https://assets0.mirraw.com/frontpages/12991/rte_main_webp.webp?1673937313",
 "https://assets0.mirraw.com/frontpages/12992/tr_main_webp.webp?1673937287",
