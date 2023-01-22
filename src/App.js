@@ -8,6 +8,7 @@ import SignupCard from './components/Signup/signup';
 import SigninCard from './components/Signup/signin';
 import FAQ from './components/Footer/FooterComponents/faq';
 import BigProduct from './components/ProductsPage/bigProductPage';
+import Skeleteon from './components/Features/Carousel/skeleton';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
 
         {/* Footer Routes */}
         <Route path='/faq' element={<FAQ />}></Route>
+
       </Routes>
       
       <Footer />
