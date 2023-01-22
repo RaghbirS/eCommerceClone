@@ -21,7 +21,7 @@ let cardImgs=["https://assets0.mirraw.com/frontpages/12979/rtru_main_webp.webp?1
 ]
 let cardImgsTitle=["Tops", "Tunics", "Dresses", "Dress Material", "Anklets", "Bangles", "Maang Tikka", "Kamarbandh", "Ecraft INDIA", "Home & Living", "Wardrobe Organizers", "Jewellery Boxes", "Prestitched Sarees", "Ruffle Sarees", "Stylee lifestyle", "Plus Size Kurtis"]
 export default function Cards(){
-    return  <Grid templateColumns='repeat(4, 1fr)' gap={6} w="80%" m="auto">
+    return  <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(4, 1fr)"]} gap={6} w="80%" m="auto">
     {cardImgs.map((pics,i)=>{
         return <GridItem w='100%' h="auto" key={i}><Card w='100%'>
     <CardBody className={Styles.cardBody}>

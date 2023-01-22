@@ -1,7 +1,6 @@
 import { Box, Center } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import {
-    chakra,
     Container,
     Stack,
     Text,
@@ -12,10 +11,7 @@ import {
     Heading,
     SimpleGrid,
     StackDivider,
-    useColorModeValue,
-    VisuallyHidden,
-    List,
-    ListItem,
+    useColorModeValue
 } from '@chakra-ui/react';
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -26,13 +22,11 @@ export default function BigProduct(props) {
     let data = useParams();
     async function getData(){
         let fet = await axios.get(`https://backend-a-pi.vercel.app/${data.categories}/${data.id}`);
-        console.log(fet.data)
         setApiData(fet.data)
     }
     useEffect(()=>{
         getData()
     },[])
-    console.log(data)
     return (
         <>
             <Container maxW={'7xl'}>
