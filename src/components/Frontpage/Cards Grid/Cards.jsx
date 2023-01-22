@@ -40,19 +40,4 @@ export default function Cards(){
   </Card> </GridItem>
     })}
   </Grid>
-    {/* <Card w='100%'>
-    <CardBody>
-      <Image
-        src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-        alt='Green double couch with wooden legs'
-        borderRadius='lg'
-      />
-      <Stack mt="-5" spacing='3'>
-      <Button variant='outline' colorScheme='black' bg="rgba(0,0,0,0.5)" color="white" _hover={{bg:"rgb(221, 0, 23)"}}>
-          Tops
-        </Button>
-      </Stack>
-        
-    </CardBody>
-  </Card>  */}
 }
