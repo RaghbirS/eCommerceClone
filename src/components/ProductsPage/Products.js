@@ -11,7 +11,7 @@ export default function Products() {
     let da = useParams()
     async function FetchData(param){
         // let data = await axios.get("https://backend-a-pi.vercel.app/lehengas?_page=5&_limit=40");
-        let data = await axios.get(`https://backend-a-pi.vercel.app/${param}`);
+        let data = await axios.get(`https://backend-a-pi.vercel.app/${param}?_page=1&_limit=35`);
         setIsLoaded(true)
         setProDta(data.data)
     }
@@ -39,6 +39,9 @@ export default function Products() {
                         }
                     })}
                 </Grid>
+                <Flex>
+                    {}
+                </Flex>
             </Flex>
         </>
 
