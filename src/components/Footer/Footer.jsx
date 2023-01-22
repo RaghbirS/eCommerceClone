@@ -23,6 +23,8 @@ export default function Footer(){
             <Center w="100%" h="100%">
                 <Box w="70%" h="auto">
                 <Grid gridTemplateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)", "repeat(5, 1fr)"]} gap={6} m="auto" >
+
+                {/* Help */}
                 <Flex direction="column" fontSize="xs">
                     <Text fontSize="lg" fontWeight="500" m="6px 0">Help</Text>
                     <Link to="/survey">Survey</Link>
@@ -31,9 +33,11 @@ export default function Footer(){
                     <Link to="/how">Payments</Link>
                     <Link to="/how">Shipping</Link>
                     <Link to="/how">Cancellations</Link>
-                    <Link to="/how">FAQ</Link>
+                    <Link to="/faq">FAQ</Link>
                     <Link to="/how">Helpdesk</Link>
                 </Flex>
+
+                {/* Company */}
                 <Flex direction="column" fontSize="xs">
                     <Text fontSize="lg" fontWeight="500" m="6px 0">COMPANY</Text>
                     <Link to="/survey">About Us</Link>
@@ -44,6 +48,7 @@ export default function Footer(){
                     <Link to="/how">Privacy</Link>
                     <Link to="/how">FAQ</Link>
                 </Flex>
+                {/* Business */}
                 <Flex direction="column" fontSize="xs">
                     <Text fontSize="lg" fontWeight="500" m="6px 0">BUSINESS</Text>
                     <Link to="/survey">International Buyers</Link>
