@@ -78,7 +78,7 @@ export function CartLog(){
   const { isOpen, onOpen, onClose } = useDisclosure()
   return <>
     {/* Login */}
-  <Menu closeOnBlur={true} closeOnSelect={true}>
+  <Menu closeOnBlur={true} closeOnSelect={true} className={styles.fill}>
     <MenuButton>
       <Flex>
         <Center fontWeight={600}>
@@ -122,14 +122,16 @@ export function CartLog(){
     _hover={{ background: "white" }}
     onClick={onOpen}
   >
-    <svg
-      style={{ height: "40px", margin: "0 0 0 10px" }}
+  <Center>
+  <svg
+      style={{height: "15px", margin: "0 0 0 10px" }}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
     >
       <path d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z" />
     </svg>
     CART{`(0)`}
+  </Center>
   </Flex> 
 
 <Modal isOpen={isOpen} onClose={onClose} size="6xl" >

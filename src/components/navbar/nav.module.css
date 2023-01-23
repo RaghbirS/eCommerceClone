@@ -6,6 +6,8 @@
 }
 .fill svg{
     fill:#670b19;
+    height: 40px;
+    width: 30px;
 }
 .giveSty *{
     font-size: 13.5px;
