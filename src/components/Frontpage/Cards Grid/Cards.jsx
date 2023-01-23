@@ -33,7 +33,7 @@ export default function Cards(){
         maxW={["100px", "200px", "full"]}
       />
       <Stack mt="-5" spacing='3'>
-      <Button variant='outline' colorScheme='black' bg="rgba(0,0,0,0.5)" color="white" fontSize="sm" textAlign="left" maxW={["100px", "200px", "full"]}>
+      <Button variant='outline' colorScheme='black' bg="rgba(0,0,0,0.5)" color="white" fontSize={["2xs","xs","sm"]} textAlign="left" maxW={["100px", "200px", "full"]}>
           {cardImgsTitle[i]}
         </Button>
       </Stack>

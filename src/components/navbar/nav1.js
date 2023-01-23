@@ -134,6 +134,7 @@ export function CartLog(){
   </Center>
   </Flex> 
 
+  {/* Cart Modal */}
 <Modal isOpen={isOpen} onClose={onClose} size="6xl" >
   <ModalOverlay  />
   <ModalContent h="60vh">
@@ -149,7 +150,7 @@ export function CartLog(){
     <Flex w={"100%"} h='100%' direction={"column"} align="center" justify="center" >
     <Spacer />
         <Box>
-          <Image src="https://www.mirraw.com/assets/empty_cart-37c63834a5d3ec25486445fc32bf710ad0a569dff0cad08f85ac85c2044ba41a.png" />
+          <Image src="https://www.mirraw.com/assets/empty_cart-37c63834a5d3ec25486445fc32bf710ad0a569dff0cad08f85ac85c2044ba41a.png" width={["5xs", "4xs"]} />
         </Box>
         <Box textAlign={"center"} m="10px">
         <Text fontSize={"lg"} fontWeight="600">Cart is Empty</Text>
