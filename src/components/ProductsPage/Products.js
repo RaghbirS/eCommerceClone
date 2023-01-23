@@ -1,5 +1,5 @@
 import { Flex, Box, Grid, Button, Spacer } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ProductCard from "./productCards";
 import MainProductfilter from "./ProductFilter/mainFilterProduct";
 import axios from "axios";
@@ -12,18 +12,34 @@ export default function Products() {
   let [proData, setProDta] = useState([]);
   let [loading, setLoading] = useState(false);
   let da = useParams();
-  async function FetchData(param) {
+//   async function FetchData(param) {
+//     setLoading(true);
+//     let data = await axios.get(
+//       `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
+//     );
+//     console.log(data)
+//     setPageLimit(data.headers["x-total-count"])
+//     setProDta(data.data);
+//     setLoading(false);
+//     window.scrollTo(0, 0)
+//   }
+//   useEffect(() => {
+//     FetchData(da.pro);
+//   }, [da.pro, page]);
+const FetchData = useCallback(async (param) => {
     setLoading(true);
     let data = await axios.get(
-      `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
+        `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
     );
     setPageLimit(data.headers["x-total-count"])
     setProDta(data.data);
     setLoading(false);
-  }
+    window.scrollTo(0, 0)
+}, [da.pro, page]);
+  
   useEffect(() => {
     FetchData(da.pro);
-  }, [da.pro, page]);
+  }, [FetchData]);
   return (
     <>
       <Flex justify="center" width="100vw">
@@ -68,6 +84,8 @@ export default function Products() {
                     key={data.id}
                     title={data["listing-title"]}
                     img={data["lazy src"]}
+                    price={data["effective-price"]}
+                    discount={data["red-discount-percentage"]}
                   />
                 );
               } else if (
@@ -81,6 +99,8 @@ export default function Products() {
                     key={data.id}
                     title={data["listing-title"]}
                     img={data["lazy-custom src"]}
+                    price={data["effective-price"]}
+                    discount={data["red-discount-percentage"]}
                   />
                 );
               }

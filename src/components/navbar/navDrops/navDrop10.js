@@ -10,7 +10,7 @@ export default function Navdrop10() {
       display="none"
       id="navHo10"
       bg="white"
-      right="2px"
+      right="-70px"
       top="40px"
       position="absolute"
       w="800px"

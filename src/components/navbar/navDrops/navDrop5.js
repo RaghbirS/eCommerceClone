@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Navdrop5() {
     return (
-        <Flex padding="10px 0" justify="space-evenly" zIndex="10" display="none" id="navHo5" bg="white" right="2px" top="40px" position="absolute" w="800px" minH="200px">
+        <Flex padding="10px 0" justify="space-evenly" zIndex="10" display="none" id="navHo5" bg="white" right="-70px" top="40px" position="absolute" w="800px" minH="200px">
             <Flex flexDirection="column" gap="5px">
                 <NavLink>TYPE</NavLink>
                 <NavLink>Necklace Sets</NavLink>

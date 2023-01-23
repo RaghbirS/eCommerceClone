@@ -1,4 +1,4 @@
-import { Image, Card, CardBody, Text, Box, Stack, StackDivider, Heading } from '@chakra-ui/react'
+import { Image, Card, CardBody, Text, Box, Stack, StackDivider, Heading, Flex } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 
 export default function ProductCard(props) {
@@ -14,12 +14,16 @@ export default function ProductCard(props) {
                             </Heading>
                         </Box>
                         <Box>
-                            <Heading size='xs' textTransform='uppercase'>
-                                Overview
-                            </Heading>
                             <Text pt='2' fontSize='sm'>
                                 {props.title}
                             </Text>
+                            <Heading size='xs' textTransform='uppercase'>
+                                <Flex gap={"10px"}>
+                                    <Box>{props.price}</Box>
+                                    <Box color={"red"}>{props.discount}</Box>
+                                </Flex>
+
+                            </Heading>
                         </Box>
                     </Stack>
                 </CardBody>

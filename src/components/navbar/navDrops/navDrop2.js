@@ -2,7 +2,7 @@ import { Flex, VStack,Image } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 export default function Navdrop2() {
     return (
-        <Flex padding="10px 0" justify="space-evenly" zIndex="10" display="none" id="navHo2" bg="white" right="2px" top="40px" position="absolute" w="800px">
+        <Flex padding="10px 0" justify="space-evenly" zIndex="10" display="none" id="navHo2" bg="white" right="-70px" top="40px" position="absolute" w="800px">
             <Flex flexDirection="column" gap="5px">
                 <NavLink>FABRIC</NavLink>
                 <NavLink>Net</NavLink>

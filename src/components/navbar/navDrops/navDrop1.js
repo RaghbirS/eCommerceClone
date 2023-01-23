@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Navdrop1() {
     return (
-            <Flex padding="10px 0" justify="space-evenly" zIndex="10" display="none"  id="navHo1" bg="white" right="2px" top="40px" position="absolute" w="800px">
+            <Flex padding="10px 0" justify="space-evenly" zIndex="10" display="none"  id="navHo1" bg="white" right="-70px" top="40px" position="absolute" w="800px">
                 {/* <VStack className="dropdown" justify="flex-start"> */}
                     <Flex flexDirection="column" gap="5px">
                     <NavLink>ROOTS</NavLink>
