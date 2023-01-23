@@ -1,8 +1,6 @@
-import { Box, Button, Flex, Image, Spacer } from '@chakra-ui/react';
-import React, { useState } from 'react'
+
+import React from 'react'
 import SimpleImageSlider from "react-simple-image-slider";
-import ReviewImage1 from "../../database/Imgs/ReviewCarousel1.png"
-import ReviewImage2 from "../../database/Imgs/ReviewCarousel2.png"
 const images = [
   { url:"https://assets0.mirraw.com/banner_sliders/10031/05_%281%29_main_webp.webp?1674107278%22%7D"},
   { url: "https://assets0.mirraw.com/banner_sliders/10027/01_%281%29_main_webp.webp?1674107117" },
