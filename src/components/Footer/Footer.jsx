@@ -19,10 +19,10 @@ export default function Footer(){
     return <>
     <SignUpdate />
     {/* <ReviewCarousel /> */}
-        <Box bg="url('https://www.mirraw.com/assets/footer_bg.png')" h="300px" m="auto" color="white">
+        <Box bg="url('https://www.mirraw.com/assets/footer_bg.png')" h="auto" p="20px" m="auto" color="white">
             <Center w="100%" h="100%">
                 <Box w="70%" h="auto">
-                <Grid gridTemplateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)", "repeat(5, 1fr)"]} gap={6} m="auto" >
+                <Grid gridTemplateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)", "repeat(4, 1fr)", "repeat(5, 1fr)"]} gap={6} m="auto" >
 
                 {/* Help */}
                 <Flex direction="column" fontSize="xs">
@@ -57,7 +57,7 @@ export default function Footer(){
                 </Flex>
 
                 {/* Coupon Partners and Social Media */}
-                <Flex direction="column" fontSize="xs">
+                <Flex direction="column" fontSize="xs" display={["none","none", "none", "block"]}>
                     <Text fontSize="lg" fontWeight="500" m="6px 0">COUPON PARTNERS</Text>
                     <Link to="/survey">Mirraw Coupons</Link>
                     <Link to="/how">Mirraw Offers</Link>
@@ -73,7 +73,7 @@ export default function Footer(){
                 </Flex>
 
                 {/* Press  */}
-                <Flex direction="column" fontSize="xs">
+                <Flex direction="column" fontSize="xs" display={["none","none", "none", "block"]}>
                     <Text fontSize="lg" fontWeight="500" m="6px 0">PRESS</Text>
                     <Flex>
                     <Box>
