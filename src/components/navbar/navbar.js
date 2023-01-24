@@ -6,7 +6,7 @@ import Nav3 from "./nav3"
 export default function Navbar() {
 
     return (
-        <Box>
+        <Box w={"100vw"} bg={"white"} zIndex={"10"} position={["fixed","fixed","static","static"]}>
             <Nav1 />
             <Nav2 />
             <Nav3/>

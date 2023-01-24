@@ -9,14 +9,18 @@ import SigninCard from './components/Signup/signin';
 import FAQ from './components/Footer/FooterComponents/faq';
 import BigProduct from './components/ProductsPage/bigProductPage';
 import Skeleteon from './components/Features/Carousel/skeleton';
+import { Box } from '@chakra-ui/react';
 
 function App() {
 
   return (
     <>
       <Navbar />
+      <Box display={["block","block","none","none","none"]} w={"100vw"} h="100px"></Box>
       <Routes>
-        <Route path='/products/:pro' element={<Products />}></Route>
+        <Route path='/products/:pro' element={<Products />}>
+          
+        </Route>
         <Route path='/signup' element={<SignupCard />}></Route>
         <Route path='/signin' element={<SigninCard />}></Route>
         <Route path='/products/:categories/:name/:id' element={<BigProduct/>}></Route>

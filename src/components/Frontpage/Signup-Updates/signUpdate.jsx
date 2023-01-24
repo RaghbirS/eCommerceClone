@@ -1,7 +1,7 @@
 import { Box, Center, Text, VStack,Input, Button, Flex} from "@chakra-ui/react";
 export default function SignUpdate(){
-    return <Box p="20px">
-        <Center>
+    return <Box  p="20px">
+        <Center >
             <VStack>
             <Text fontSize="xl" fontWeight="600" letterSpacing={3}>SIGN UP TO RECIEVE OUR UPDATES</Text>
             <Text fontStyle="italic">Be the first to know about latest offers and discounts on Mirraw</Text>
