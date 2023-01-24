@@ -2,7 +2,7 @@ import { Box, Text, Accordion, AccordionButton, AccordionItem, AccordionPanel, F
 import LordIcon from "../../Features/Carousel/LordIcon"
 
 export default function Expand(){
-      return  <Box w="75%" m="auto" p="20px">
+      return  <Box w={["95%","85%","75%"]} m="auto" p="20px">
             <Text fontWeight="700" fontSize="xl">Indian Clothing Online Shopping for Women & Men</Text>
             <Box fontSize="sm" m="10px 0">
             During 2500 BC, India became one of the first places to grow and use cotton for making clothes. Human art forms in Indian temples and monuments are perhaps the main source of information on Indian clothing. Apart from that the rock-cut sculptures, the cave paintings, and remains from the sites of Indus Valley civilization also give a detailed bureau of clothing trends in India.
