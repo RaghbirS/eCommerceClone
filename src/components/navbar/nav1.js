@@ -25,6 +25,8 @@ import modal from "../database/Imgs/modal.png"
 // } from '@chakra-ui/react'
 import styles from "./nav.module.css";
 import { CloseIcon } from "@chakra-ui/icons";
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext/context";
 export default function Nav1() {
 
   return (
@@ -81,47 +83,9 @@ export function CartLog(){
   const { isOpen, onOpen, onClose } = useDisclosure()
   return <>
   <Flex>
-    {/* Logout */}
-    <Flex fontSize={"xs"} >
-        <Center fontWeight={600}>
-        <svg style={{display:"block"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96C43 32 0 75 0 128V384c0 53 43 96 96 96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H96c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32h64zM504.5 273.4c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22v72H192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32H320v72c0 9.6 5.7 18.2 14.5 22s19 2 26-4.6l144-136z"/></svg>
-          LOG OUT
-        </Center>
-      </Flex>
-    {/* Login */}
-  <Menu closeOnBlur={true} closeOnSelect={true} className={styles.fill}>
-    <MenuButton fontSize={"xs"}>
-      <Flex>
-        <Center fontWeight={600}>
-          <svg
-            style={{ height: "15px", marginRight: "5px" }}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-          >
-            <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-          </svg>
-          LOG IN
-        </Center>
-      </Flex>
-    </MenuButton>
-    <MenuList>
-    <MenuItem>
-    <Box textAlign="center" m="5px" w="100%" >
-        <Text mb={"5px"}>Existing User</Text>
-        <NavLink to="/signin" style={{backgroundColor:"rgb(103, 11, 25)", color:"white",marginTop:"5px", padding:"3px 30px", fontWeight:"600"}}>
-            Login
-        </NavLink>
-      </Box></MenuItem>
-      <MenuItem>
-      <Box textAlign="center" m="5px" w="100%">
-        <Text>New to Mirraw</Text>
-        <NavLink to="/signup" style={{backgroundColor:"rgb(103, 11, 25)", color:"white", padding:"3px 30px", fontWeight:"600"}}>
-            Register
-        </NavLink>
-      </Box>
-      </MenuItem>
-    </MenuList>
-  </Menu>
+   
+   <LogInLogOut />
+
   {/* Cart  */}
 
   <Flex
@@ -172,16 +136,6 @@ export function CartLog(){
         </Button>
         <Spacer />
     </Flex>
-    {/* <ModalFooter>
-      <Flex w="100%" justify={"center"} align="center">
-      <Text fontSize={"xs"}>Query? Mail us at team@mirraw.com</Text>
-      <Spacer />
-      <Button bg="rgb(48, 48, 48)" color="white" mr={3} onClick={onClose} size="sm">
-        Continue Shopping
-      </Button>
-      <Spacer />
-      </Flex>
-    </ModalFooter> */}
     </ModalBody>
 
     
@@ -190,4 +144,48 @@ export function CartLog(){
   </Flex>
 
 </>
+}
+
+function LogInLogOut(){
+     {/* Logout */}
+     let {state} = useContext(AuthContext)
+     return state? <Flex fontSize={"xs"} className={styles.fill} >
+        <Center fontWeight={600}>
+        <svg style={{display:"block", marginRight:"10px"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96C43 32 0 75 0 128V384c0 53 43 96 96 96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H96c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32h64zM504.5 273.4c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22v72H192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32H320v72c0 9.6 5.7 18.2 14.5 22s19 2 26-4.6l144-136z"/></svg>
+          LOG OUT
+        </Center>
+      </Flex> :( 
+  <Menu closeOnBlur={true} closeOnSelect={true} >
+    <MenuButton fontSize={"xs"}>
+      <Flex className={styles.fill}>
+        <Center fontWeight={600}>
+          <svg
+            style={{width: "5px !important", margin: "0 0 0 10px" }}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+          </svg>
+          LOG IN
+        </Center>
+      </Flex>
+    </MenuButton>
+    <MenuList>
+    <MenuItem>
+    <Box textAlign="center" m="5px" w="100%" >
+        <Text mb={"5px"}>Existing User</Text>
+        <NavLink to="/signin" style={{backgroundColor:"rgb(103, 11, 25)", color:"white",marginTop:"5px", padding:"3px 30px", fontWeight:"600"}}>
+            Login
+        </NavLink>
+      </Box></MenuItem>
+      <MenuItem>
+      <Box textAlign="center" m="5px" w="100%">
+        <Text>New to Mirraw</Text>
+        <NavLink to="/signup" style={{backgroundColor:"rgb(103, 11, 25)", color:"white", padding:"3px 30px", fontWeight:"600"}}>
+            Register
+        </NavLink>
+      </Box>
+      </MenuItem>
+    </MenuList>
+  </Menu>)
 }
