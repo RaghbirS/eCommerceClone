@@ -14,7 +14,7 @@ import ProductFilter11 from "./ProductFilter11";
 export default function MainProductfilter(){
 
     return(
-        <Flex flexDir="column" gap="10px" overflowY="scroll" p="10px" w="15vw" top="0" position="sticky" h="100vh" >
+        <Flex display={["none","none","none","flex"]} flexDir="column" gap="10px" overflowY="scroll" p="10px" w="15vw" top="0" position="sticky" h="100vh" >
             <ProductFilter1/>
             <ProductFilter2/>
             <ProductFilter3/>

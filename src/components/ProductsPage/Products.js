@@ -66,7 +66,7 @@ const FetchData = useCallback(async (param) => {
           ]}
           gap="10px"
           p="10px"
-          w="65vw"
+          w={["95vw","90vw","65vw"]}
           minH="200vh"
         >
           {loading ? (

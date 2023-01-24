@@ -10,7 +10,7 @@ export default function ProductCard(props) {
                     <Stack divider={<StackDivider />} spacing='4'>
                         <Box>
                             <Heading size='xs' textTransform='uppercase'>
-                                <Image src={props.img}></Image>
+                                <Image width={"100%"} src={props.img}></Image>
                             </Heading>
                         </Box>
                         <Box>
