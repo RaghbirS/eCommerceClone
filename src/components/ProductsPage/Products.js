@@ -1,48 +1,68 @@
-import { Flex, Box, Grid, Button, Spacer } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Grid,
+  Button,
+  Spacer,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Accordion,
+  AccordionButton,
+  AccordionItem,
+  AccordionIcon,
+  AccordionPanel,
+} from "@chakra-ui/react";
 import { useCallback, useEffect, useState } from "react";
 import ProductCard from "./productCards";
 import MainProductfilter from "./ProductFilter/mainFilterProduct";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import Skeleteon from "../Features/Carousel/skeleton";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 export default function Products() {
   let [page, setPage] = useState(1);
-  let [pageLimit, setPageLimit]= useState(0)
+  let [pageLimit, setPageLimit] = useState(0);
   let [proData, setProDta] = useState([]);
   let [loading, setLoading] = useState(false);
   let da = useParams();
-//   async function FetchData(param) {
-//     setLoading(true);
-//     let data = await axios.get(
-//       `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
-//     );
-//     console.log(data)
-//     setPageLimit(data.headers["x-total-count"])
-//     setProDta(data.data);
-//     setLoading(false);
-//     window.scrollTo(0, 0)
-//   }
-//   useEffect(() => {
-//     FetchData(da.pro);
-//   }, [da.pro, page]);
-const FetchData = useCallback(async (param) => {
-    setLoading(true);
-    let data = await axios.get(
+  //   async function FetchData(param) {
+  //     setLoading(true);
+  //     let data = await axios.get(
+  //       `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
+  //     );
+  //     console.log(data)
+  //     setPageLimit(data.headers["x-total-count"])
+  //     setProDta(data.data);
+  //     setLoading(false);
+  //     window.scrollTo(0, 0)
+  //   }
+  //   useEffect(() => {
+  //     FetchData(da.pro);
+  //   }, [da.pro, page]);
+  const FetchData = useCallback(
+    async (param) => {
+      setLoading(true);
+      let data = await axios.get(
         `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
-    );
-    setPageLimit(data.headers["x-total-count"])
-    setProDta(data.data);
-    setLoading(false);
-    window.scrollTo(0, 0)
-}, [da.pro, page]);
-  
+      );
+      setPageLimit(data.headers["x-total-count"]);
+      setProDta(data.data);
+      setLoading(false);
+      window.scrollTo(0, 0);
+    },
+    [da.pro, page]
+  );
+
   useEffect(() => {
     FetchData(da.pro);
   }, [FetchData]);
   return (
     <>
       <Flex justify="center" width="100vw">
+        <Spacer />
         <Flex align="center" width="80%">
           <Flex align="center">
             Home <Box margin="2px">/</Box>
@@ -54,19 +74,75 @@ const FetchData = useCallback(async (param) => {
             Sarees <Box margin="2px">/</Box>
           </Flex>
         </Flex>
+        <Spacer />
+        <Menu>
+          <MenuButton
+            as={Button}
+            rightIcon={<ChevronDownIcon />}
+            display={["block", "block", "block", "none"]}
+          >
+            Filter
+          </MenuButton>
+          <MenuList>
+            <Accordion allowMultiple={true}>
+              {/* Price */}
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box as="span" flex="1" textAlign="left">
+                      Sort by Price
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <MenuItem>High to Low</MenuItem>
+                  <MenuItem>Low to High</MenuItem>
+                </AccordionPanel>
+              </AccordionItem>
+
+              {/* Discount */}
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box as="span" flex="1" textAlign="left">
+                      Sort by Discount
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  <MenuItem>
+                  High to Low
+                  </MenuItem>
+                  <MenuItem>
+                  Low to High
+                  </MenuItem>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
+            {/* <MenuItem>Download</MenuItem>
+            <MenuItem>Create a Copy</MenuItem>
+            <MenuItem>Mark as Draft</MenuItem>
+            <MenuItem>Delete</MenuItem>
+            <MenuItem>Attend a Workshop</MenuItem> */}
+          </MenuList>
+        </Menu>
+        <Spacer />
       </Flex>
       <Flex width="100vw" justify="center">
+        {/* Side Filter */}
         <MainProductfilter />
         <Grid
           templateColumns={[
-            "repeat(1, 1fr)",
+            "repeat(2, 1fr)",
             "repeat(2, 1fr)",
             "repeat(3, 1fr)",
             "repeat(4, 1fr)",
           ]}
           gap="10px"
           p="10px"
-          w={["95vw","90vw","65vw"]}
+          w={["95vw", "90vw", "65vw"]}
           minH="200vh"
         >
           {loading ? (
@@ -113,9 +189,29 @@ const FetchData = useCallback(async (param) => {
         <Spacer />
         <Spacer />
         <Spacer />
-        <Button isDisabled={page <= 1} fontSize="2xl" fontWeight={700} onClick={()=>{setPage(page-1)}}>-</Button>
-        <Button isDisabled={true} fontSize="2xl" fontWeight={700} m="0 10px">{page}</Button>
-        <Button fontSize="2xl" fontWeight={700} onClick={()=>{setPage(page+1)}} isDisabled={page>=(pageLimit/35)} >+</Button>
+        <Button
+          isDisabled={page <= 1}
+          fontSize="2xl"
+          fontWeight={700}
+          onClick={() => {
+            setPage(page - 1);
+          }}
+        >
+          -
+        </Button>
+        <Button isDisabled={true} fontSize="2xl" fontWeight={700} m="0 10px">
+          {page}
+        </Button>
+        <Button
+          fontSize="2xl"
+          fontWeight={700}
+          onClick={() => {
+            setPage(page + 1);
+          }}
+          isDisabled={page >= pageLimit / 35}
+        >
+          +
+        </Button>
         <Spacer />
         <Spacer />
         <Spacer />
