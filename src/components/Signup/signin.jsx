@@ -19,22 +19,44 @@ import {
   } from '@chakra-ui/react';
   import { useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
+import axios from 'axios';
+import { useRef, useContext } from 'react';
+import { AuthContext } from '../AuthContext/context';
   
   export default function SigninCard() {
     const [showPassword, setShowPassword] = useState(false);
-  
+    const {Login, state} = useContext(AuthContext)
+    let email = useRef(null)
+    let password = useRef(null)
+
+    async function checkUser(){
+      let data = await axios.get("https://purple-fog-period.glitch.me/users")
+      
+      let users=data.data
+      users.map(el=>{
+        if(el.email== email.current.value && el.pass == password.current.value){
+          Login()
+         return 
+        } 
+
+      })
+ 
+    }
+    if(state){
+      return <Navigate to="/" />
+    }
     return (
       <Flex
         minH={'50vh'}
         align={'center'}
         justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
+        bg={('gray.50')}>
         <Stack spacing={8} mx={'auto'} w={'xl'} py={12} px={6}>
           
           <Box
             rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
+            bg={('white')}
             boxShadow={'0 1px 20px rgb(0 0 0 / 19%), 0px 0px 6px rgb(0 0 0 / 23%)'}
             w="80%"
             m="auto"
@@ -48,12 +70,12 @@ import { NavLink } from 'react-router-dom';
         
               <FormControl id="email" isRequired>
                 {/* Email address*/}
-                <Input type="email" placeholder='Email Address' />
+                <Input type="email" placeholder='Email Address' ref={email} />
               </FormControl>
               {/* Password  */}
               <FormControl id="password" isRequired>
                 <InputGroup>
-                  <Input type={showPassword ? 'text' : 'password'} placeholder="Password" />
+                  <Input type={showPassword ? 'text' : 'password'} placeholder="Password" ref={password} />
                   <InputRightElement h={'full'}>
                     <Button
                       variant={'ghost'}
@@ -74,6 +96,9 @@ import { NavLink } from 'react-router-dom';
                   m="auto"
                   bg={'rgb(103, 11, 25)'}
                   color={'white'}
+                  onClick={()=>{
+                    checkUser()
+                  }}
                   _hover={{
                     bg: 'rgb(103, 11, 25)',
                   }}>

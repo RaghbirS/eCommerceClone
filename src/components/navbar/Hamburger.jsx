@@ -20,10 +20,12 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext/context";
 export default function DrawerExample() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-
+let {LogOut} = useContext(AuthContext)
   return (
     <>
       <Button
@@ -208,6 +210,12 @@ export default function DrawerExample() {
             </Accordion>
           </DrawerBody>
           <DrawerFooter>
+          <Button variant="outline" mr={3} onClick={()=>{
+            LogOut()
+            onClose()
+          }}>
+              Logout
+            </Button>
             <Button variant="outline" mr={3} onClick={onClose}>
               Close
             </Button>
