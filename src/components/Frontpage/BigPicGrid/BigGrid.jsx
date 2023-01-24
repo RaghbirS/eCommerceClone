@@ -1,7 +1,7 @@
 import { Box, Flex, Image } from "@chakra-ui/react";
 export function BigGrid() {
   return (
-    <Flex w="85%" m="2% auto">
+    <Flex w="85%" m="2% auto" display={["none","none","none", "flex", "flex"]}>
       {/* first column */}
       <Box>
         <Image src="https://assets0.mirraw.com/frontpages/13065/B_01_original_sized_webp.webp?1673848746" />

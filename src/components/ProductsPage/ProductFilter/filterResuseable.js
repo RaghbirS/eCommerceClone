@@ -12,7 +12,6 @@ export default function FilterReusable(props) {
         else if (heig == 40) {
             btnHeight(300)
         }
-        console.log(heig)
     }
     return (
         <div className={styles.FFilter} style={{ height: `${heig}px` }}>
