@@ -16,11 +16,26 @@ import {
     Divider,
     Image,
   } from '@chakra-ui/react';
-  import { useState } from 'react';
+  import { useRef, useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import axios from 'axios';
+import { Navigate, NavLink } from 'react-router-dom';
   
   export default function SignupCard() {
     const [showPassword, setShowPassword] = useState(false);
+    let mail = useRef(null);
+    let pass = useRef(null);
+    let conPass = useRef(null);
+
+    function CreateUser(){
+      let user = {
+        email:mail.current.value,
+        pass:pass.current.value,
+        conPass: conPass.current.value
+      }
+      axios.post("https://purple-fog-period.glitch.me/users",user)
+
+    }
   
     return (
       <Flex
@@ -46,12 +61,12 @@ import {
         
               <FormControl id="email" isRequired>
                 {/* Email address*/}
-                <Input type="email" placeholder='Email Address' />
+                <Input ref={mail} type="email" placeholder='Email Address' />
               </FormControl>
               {/* Password  */}
               <FormControl id="password" isRequired>
                 <InputGroup>
-                  <Input type={showPassword ? 'text' : 'password'} placeholder="Password" />
+                  <Input ref={pass} type={showPassword ? 'text' : 'password'} placeholder="Password" />
                   <InputRightElement h={'full'}>
                     <Button
                       variant={'ghost'}
@@ -66,7 +81,7 @@ import {
               <FormControl id="Confirmpassword" isRequired>
                 {/* Confirm Password */}
                 <InputGroup>
-                  <Input type={showPassword ? 'text' : 'password'} placeholder="Confirm Password" />
+                  <Input ref={conPass} type={showPassword ? 'text' : 'password'} placeholder="Confirm Password" />
                   <InputRightElement h={'full'}>
                     <Button
                       variant={'ghost'}
@@ -88,6 +103,7 @@ import {
               </FormControl>.
               {/* Sign up Button */}
               <Stack spacing={10}>
+                <NavLink to="/signin" style={{margin:"auto", width:"100%"}}>
                 <Button
                   loadingText="Submitting"
                   size="sm"
@@ -95,11 +111,13 @@ import {
                   m="auto"
                   bg={'rgb(103, 11, 25)'}
                   color={'white'}
+                  onClick={()=>{CreateUser()}}
                   _hover={{
                     bg: 'rgb(103, 11, 25)',
                   }}>
                   Sign up
                 </Button>
+                </NavLink>
               </Stack>
 
               <Divider borderBottom={"1px solid black"} />
