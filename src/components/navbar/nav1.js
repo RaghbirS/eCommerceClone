@@ -163,7 +163,7 @@ function LogInLogOut(){
       <Flex >
         <Center fontWeight={600}>
           <svg
-            style={{width: "15px", margin: "0 5px 0 10px" }}
+            style={{width: "15px", margin: "0 5px 0px 10px" }}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
           >
