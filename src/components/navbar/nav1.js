@@ -123,90 +123,86 @@ export function CartLog() {
               <ModalCloseButton color={"white"} />
             </ModalHeader>
             <ModalBody overflowY={"scroll"} bg="rgb(244, 244, 244)">
+              {/* Card Body */}
+              
+              {cartItems.length>0?cartItems.map((el,i)=>{
+                return <Flex key={i}>
+                {/* Cart Items */}
+                <Flex bg="white" p="10px" w="60%">
+                  <Center>
+                    <Box>
+                      <Image
+                        src={el.img}
+                        w={["50%", "100%"]}
+                      />
+                    </Box>
+                  </Center>
+                  <VStack ml="5%" spacing={"25px"}>
+                    <Text fontSize={"sm"} fontWeight="700">
+                      {el.title}
+                    </Text>
+                    <Flex justify={"center"} align={"center"}>
+                      {" "}
+                      Qty:
+                      <Button
+                        variant={"outline"}
+                        bg="gray.200"
+                        isDisabled={NumberOfItems <= 1}
+                        onClick={() => {
+                          setNumberOfItems(NumberOfItems - 1);
+                        }}
+                      >
+                        -1
+                      </Button>
+                      <Button isDisabled={true}>{NumberOfItems}</Button>
+                      <Button
+                        variant={"outline"}
+                        bg="gray.200"
+                        onClick={() => {
+                          setNumberOfItems(NumberOfItems + 1);
+                        }}
+                      >
+                        +1
+                      </Button>
+                    </Flex>
+                  </VStack>
+                  <Spacer />
+                  <VStack>
+                    <Button size={"xs"}>REMOVE</Button>
+                    <Text>Price: ${el.price.split(" ")[1]}</Text>
+                    <Text>Price: ${el.price.split(" ")[1]}</Text>
+                  </VStack>
+                  <Spacer />
+                </Flex>
 
-            {/* Card Body */}
-            <Flex>
-              {/* Cart Items */}
-              <Flex bg="white" p="10px" w="60%">
-                <Center>
-                  <Box>
-                    <Image
-                      src="https://assets0.mirraw.com/images/6156714/image_long.jpeg?1538581794"
-                      w={["50%", "100%"]}
-                    />
+                {/* Order Details */}
+                <Spacer />
+                <Flex w="38%" m="0 auto">
+                  <Box w={"100%"}>
+                    <Text display={"block"}>ORDER SUMMARY</Text>
+                    <Flex>
+                      <Text>Item Total</Text>
+                      <Spacer />
+                      <Text>$ {el.price.split(" ")[1]}</Text>
+                    </Flex>
+                    <Flex>
+                      <Text>Quantity</Text>
+                      <Spacer />
+                      <Text>{NumberOfItems}</Text>
+                    </Flex>
+                    <Flex>
+                      <Text>Amount Payable</Text>
+                      <Spacer />
+                      <Text>$ {el.price.split(" ")[1] * NumberOfItems}</Text>
+                    </Flex>
+                    <Spacer />
+                    <Flex justify={"center"}>
+                      <Button size="sm">PLACE ORDER</Button>
+                    </Flex>
                   </Box>
-                </Center>
-                <VStack ml="5%" spacing={"25px"}>
-                  <Text fontSize={"sm"} fontWeight="700">
-                    Image Title
-                  </Text>
-                  <Flex justify={"center"} align={"center"}>
-                    {" "}
-                    Qty:
-                    <Button
-                      variant={"outline"}
-                      bg="gray.200"
-                      isDisabled={NumberOfItems <= 1}
-                      onClick={() => {
-                        setNumberOfItems(NumberOfItems - 1);
-                      }}
-                    >
-                      -1
-                    </Button>
-                    <Button isDisabled={true}>{NumberOfItems}</Button>
-                    <Button
-                      variant={"outline"}
-                      bg="gray.200"
-                      onClick={() => {
-                        setNumberOfItems(NumberOfItems + 1);
-                      }}
-                    >
-                      +1
-                    </Button>
-                  </Flex>
-                </VStack>
-                <Spacer />
-                <VStack>
-                  <Button size={"xs"}>REMOVE</Button>
-                  <Text>Price: $234</Text>
-                  <Text>Price: $234</Text>
-                </VStack>
-                <Spacer />
+                </Flex>
               </Flex>
-
-              {/* Order Details */}
-              <Flex w="40%">
-                <Box w={"100%"}>
-                <Text display={"block"}>ORDER SUMMARY</Text>
-                <Flex>
-                
-                  <Text>Item Total</Text>
-                  <Spacer />
-                  <Text>$ 234</Text>
-                  
-                </Flex>
-                <Flex>
-                
-                  <Text>Quantity</Text>
-                  <Spacer />
-                  <Text>{NumberOfItems}</Text>
-                  
-                </Flex>
-                <Flex>
-                
-                  <Text>Amount Payable</Text>
-                  <Spacer />
-                  <Text>{234* NumberOfItems}</Text>
-                  
-                </Flex>
-                <Spacer />
-                <Flex justify={"center"}>
-                <Button size="sm">PLACE ORDER</Button>
-                </Flex>
-                </Box>
-              </Flex>
-            </Flex>
-              {/* <Flex w={"100%"} h='100%' direction={"column"} align="center" justify="center" >
+              }):(<Flex w={"100%"} h='100%' direction={"column"} align="center" justify="center" >
     <Spacer />
         <Box>
           <Image src="https://www.mirraw.com/assets/empty_cart-37c63834a5d3ec25486445fc32bf710ad0a569dff0cad08f85ac85c2044ba41a.png" width={["5xs", "4xs"]} />
@@ -219,7 +215,12 @@ export function CartLog() {
           Return to Shop
         </Button>
         <Spacer />
-    </Flex> */}
+    </Flex>)}
+              
+
+
+              {/* Dont know what this is */}
+              
             </ModalBody>
           </ModalContent>
         </Modal>
