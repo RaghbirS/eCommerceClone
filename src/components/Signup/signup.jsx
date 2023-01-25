@@ -27,13 +27,25 @@ import { Navigate, NavLink } from 'react-router-dom';
     let pass = useRef(null);
     let conPass = useRef(null);
 
-    function CreateUser(){
+   async function CreateUser(){
       let user = {
         email:mail.current.value,
         pass:pass.current.value,
         conPass: conPass.current.value
       }
-      axios.post("https://purple-fog-period.glitch.me/users",user)
+      let data = await axios.get("https://purple-fog-period.glitch.me/users")
+
+      // let users = data.data
+      // console.log(users)
+      // users.map(el=>{
+      //   return if(el.email==mail.current.value){
+      //     alert("User Already Exists, Please Login")
+      //     X
+      //   }else{
+
+          axios.post("https://purple-fog-period.glitch.me/users",user)
+      //   }
+      // })
 
     }
   
