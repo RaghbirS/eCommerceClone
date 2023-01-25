@@ -19,7 +19,7 @@ import {
   import { useRef, useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import axios from 'axios';
-import { Navigate, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
   
   export default function SignupCard() {
     const [showPassword, setShowPassword] = useState(false);
