@@ -35,7 +35,8 @@ import { useContext } from 'react';
       let user = {
         email:mail.current.value,
         pass:pass.current.value,
-        conPass: conPass.current.value
+        conPass: conPass.current.value,
+        cart:[]
       }
       let data = await axios.get("https://purple-fog-period.glitch.me/users")
 

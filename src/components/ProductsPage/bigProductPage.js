@@ -16,7 +16,20 @@ import {
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../AuthContext/context";
+
+async function addToCart(userID,newItem){
+    if(userID==undefined) return;
+    let data = await axios.get(`https://purple-fog-period.glitch.me/users/${userID}`);
+    let cartItems = data.data.cart;
+    console.log(cartItems)
+
+
+    axios.patch(`https://purple-fog-period.glitch.me/users/${userID}`,{
+        cart:[...cartItems,newItem]
+    })
+}
 export default function BigProduct(props) {
+    let {loginUserID} = useContext(AuthContext);
     const {cartItems,setCartItems} = useContext(AuthContext)
     window.scrollTo(0, 0)
     let [apiData,setApiData] = useState({})
@@ -120,7 +133,7 @@ export default function BigProduct(props) {
                                     price:apiData["effective-price"]
                                 }
                                 setCartItems([...cartItems,data1]);
-                                console.log(cartItems)
+                                addToCart(loginUserID.id,data1)
                             }}
                             _hover={{
                                 transform: 'translateY(2px)',
