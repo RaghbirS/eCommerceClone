@@ -20,14 +20,18 @@ import {
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 import {  NavLink } from 'react-router-dom';
+import { AuthContext } from '../AuthContext/context';
+import { useContext } from 'react';
   
   export default function SignupCard() {
+    let {setUserCreated, setUserExists} = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
     let mail = useRef(null);
     let pass = useRef(null);
     let conPass = useRef(null);
 
    async function CreateUser(){
+    let condition = true
       let user = {
         email:mail.current.value,
         pass:pass.current.value,
@@ -35,18 +39,20 @@ import {  NavLink } from 'react-router-dom';
       }
       let data = await axios.get("https://purple-fog-period.glitch.me/users")
 
-      // let users = data.data
-      // console.log(users)
-      // users.map(el=>{
-      //   return if(el.email==mail.current.value){
-      //     alert("User Already Exists, Please Login")
-      //     X
-      //   }else{
+      let users= data.data
 
+      users.forEach(el => {
+        if(el.email == user.email){
+          condition = false
+          setUserExists(true)
+        setTimeout(()=>setUserExists(false),3000)
+        }
+      });
+         if (condition){
           axios.post("https://purple-fog-period.glitch.me/users",user)
-      //   }
-      // })
-
+        }
+        setUserCreated(true)
+        setTimeout(()=>setUserCreated(false),3000)
     }
   
     return (

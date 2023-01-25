@@ -9,12 +9,14 @@ import SigninCard from './components/Signup/signin';
 import FAQ from './components/Footer/FooterComponents/faq';
 import BigProduct from './components/ProductsPage/bigProductPage';
 import { Box } from '@chakra-ui/react';
-import AlertCompo from './components/alertCompo/alertCompo';
+import AlertCompo, { CustomAlert, UserExistsAlert } from './components/alertCompo/alertCompo';
 
 function App() {
 
   return (
     <>
+    <CustomAlert msgs={"User Account Succesfully Added"} status={"success"} />
+    <UserExistsAlert />
     <AlertCompo/>
       <Navbar />
       <Box display={["block","block","none","none","none"]} w={"100vw"} h="100px"></Box>

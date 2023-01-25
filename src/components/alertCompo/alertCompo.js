@@ -17,3 +17,19 @@ export default function AlertCompo() {
     )
 }
 // display={alertVal==true?"flex":"none"}
+
+export function CustomAlert({msgs,status}){
+    let {userCreated} = useContext(AuthContext)
+    return <Alert transition={"1s"} w={"25%"} position={"fixed"} top={"10px"} left={"37.5%"} opacity={userCreated==true?"100%":"0%"}  status="success">
+    <AlertIcon />
+    <AlertTitle>{msgs}</AlertTitle>
+</Alert>
+}
+
+export function UserExistsAlert(){
+    let {userExists} = useContext(AuthContext)
+    return <Alert transition={"1s"} w={"25%"} position={"fixed"} top={"10px"} left={"37.5%"} opacity={userExists==true?"100%":"0%"}  status="warning">
+    <AlertIcon />
+    <AlertTitle>User Already Exists! Please Login!</AlertTitle>
+</Alert>
+}

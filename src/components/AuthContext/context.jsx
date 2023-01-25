@@ -6,12 +6,14 @@ export let AuthContext = createContext()
 export default function ContextProvider({children}){
     const [state, setState] = useState(false);
     const [alertVal,setAlertVal] = useState(false)
+    const [userCreated, setUserCreated] = useState(false)
+    const [userExists, setUserExists] = useState(false)
     function Login(){
         setState(true)
     }
     function LogOut(){
         setState(false)
 }
-    return <AuthContext.Provider value={{state,Login, LogOut,alertVal,setAlertVal}}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{state,Login, LogOut,alertVal,setAlertVal, userCreated,setUserCreated,userExists, setUserExists}}>{children}</AuthContext.Provider>
         
 }
