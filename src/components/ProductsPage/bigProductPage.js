@@ -19,17 +19,17 @@ import { AuthContext } from "../AuthContext/context";
 
 async function addToCart(userID,newItem){
     if(userID==undefined) return;
-    let data = await axios.get(`https://purple-fog-period.glitch.me/users/${userID}`);
+    let data = await axios.get(`https://festive-candle-fontina.glitch.me/shop/${userID}`);
     let cartItems = data.data.cart;
     console.log(cartItems)
 
 
-    axios.patch(`https://purple-fog-period.glitch.me/users/${userID}`,{
+    axios.patch(`https://festive-candle-fontina.glitch.me/shop/${userID}`,{
         cart:[...cartItems,newItem]
     })
 }
 export default function BigProduct(props) {
-    let {loginUserID} = useContext(AuthContext);
+    let {loginUserID,setCartLength} = useContext(AuthContext);
     const {cartItems,setCartItems} = useContext(AuthContext)
     window.scrollTo(0, 0)
     let [apiData,setApiData] = useState({})
@@ -126,14 +126,15 @@ export default function BigProduct(props) {
                             bg={useColorModeValue('gray.900', 'gray.50')}
                             color={useColorModeValue('white', 'gray.900')}
                             textTransform={'uppercase'}
-                            onClick={()=>{
+                            onClick={async ()=>{
                                 let data1 = {
                                     img,
                                     name:data.name.toUpperCase(),
                                     price:apiData["effective-price"]
                                 }
+                                setCartLength((prev)=>prev+1)
                                 setCartItems([...cartItems,data1]);
-                                addToCart(loginUserID.id,data1)
+                                addToCart(loginUserID?.id,data1)
                             }}
                             _hover={{
                                 transform: 'translateY(2px)',
