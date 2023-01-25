@@ -24,21 +24,34 @@ import axios from 'axios';
 import { useRef, useContext } from 'react';
 import { AuthContext } from '../AuthContext/context';
   
+async function Id(name,func){
+  let data = await axios.get("https://festive-candle-fontina.glitch.me/shop");
+  data.data.forEach(el => {
+    if(el.email==name){
+      let id = el.id;
+      let email = el.email;
+      func({id,email})
+    }
+  });
+}
+
   export default function SigninCard() {
     const [showPassword, setShowPassword] = useState(false);
     const {Login, state,setAlertVal} = useContext(AuthContext)
+    const {loginUserID,setLoginUserID} = useContext(AuthContext)
     let email = useRef(null)
     let password = useRef(null)
-
+    
     async function checkUser(){
-      let data = await axios.get("https://purple-fog-period.glitch.me/users");
+      let data = await axios.get("https://festive-candle-fontina.glitch.me/shop");
       let users=data.data;
       let success = false;
       users.map(el=>{
         if(el.email== email.current.value && el.pass == password.current.value){
           Login();
           success = true;
-        } 
+          Id(email.current.value,setLoginUserID)
+        }
       })
       if(success) return;
       setAlertVal(true);

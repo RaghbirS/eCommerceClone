@@ -30,16 +30,15 @@ import { useContext } from 'react';
     let pass = useRef(null);
     let conPass = useRef(null);
 
-    axios.delete("https://purple-fog-period.glitch.me/users/5")
-
    async function CreateUser(){
     let condition = true
       let user = {
         email:mail.current.value,
         pass:pass.current.value,
-        conPass: conPass.current.value
+        conPass: conPass.current.value,
+        cart:[]
       }
-      let data = await axios.get("https://purple-fog-period.glitch.me/users")
+      let data = await axios.get("https://festive-candle-fontina.glitch.me/shop")
 
       let users= data.data
 
@@ -51,7 +50,7 @@ import { useContext } from 'react';
         }
       });
          if (condition){
-          axios.post("https://purple-fog-period.glitch.me/users",user)
+          axios.post("https://festive-candle-fontina.glitch.me/shop",user)
         }
         setUserCreated(true)
         setTimeout(()=>setUserCreated(false),3000)

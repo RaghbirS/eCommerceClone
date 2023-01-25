@@ -26,9 +26,11 @@ import modal from "../database/Imgs/modal.png";
 // } from '@chakra-ui/react'
 import styles from "./nav.module.css";
 import { CloseIcon } from "@chakra-ui/icons";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthContext/context";
+import axios from "axios";
 export default function Nav1() {
+  let { loginUserID } = useContext(AuthContext)
   return (
     <Flex
       id="top"
@@ -60,7 +62,8 @@ export default function Nav1() {
           {" "}
           Sell On Mirraw <span>|</span>
         </NavLink>
-        <NavLink className={styles.marginNav}> Survey</NavLink>
+        <NavLink className={styles.marginNav}> Survey<span>|</span></NavLink>
+        <NavLink className={styles.marginNav}> {loginUserID?.email || "none"}</NavLink>
       </Flex>
 
       {/* Login and Cart */}
@@ -79,9 +82,21 @@ export default function Nav1() {
 }
 
 export function CartLog() {
+  let { loginUserID,setCartLength ,cartLength,cartItems,setCartItems} = useContext(AuthContext)
   let [NumberOfItems, setNumberOfItems] = useState(0);
-  let { cartItems } = useContext(AuthContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  async function get(userID) {
+    if(!userID) return;
+    let data = await axios.get(`https://festive-candle-fontina.glitch.me/shop/${userID}`);
+    let apiCartData = data.data.cart;
+    setCartLength(apiCartData.length)
+    setCartItems(apiCartData)
+    console.log("HEllo")
+  }
+
+  useEffect(() => {
+    get(loginUserID?.id)
+  },[loginUserID?.id])
   return (
     <>
       <Flex>
@@ -106,7 +121,7 @@ export function CartLog() {
             >
               <path d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z" />
             </svg>
-            CART{`(0)`}
+            CART{`(${cartLength})`}
           </Center>
         </Flex>
 
@@ -124,103 +139,104 @@ export function CartLog() {
             </ModalHeader>
             <ModalBody overflowY={"scroll"} bg="rgb(244, 244, 244)">
               {/* Card Body */}
-              
-              {cartItems.length>0?cartItems.map((el,i)=>{
-                return <Flex key={i}>
-                {/* Cart Items */}
-                <Flex bg="white" p="10px" w="60%">
-                  <Center>
-                    <Box>
-                      <Image
-                        src={el.img}
-                        w={["50%", "100%"]}
-                      />
-                    </Box>
-                  </Center>
-                  <VStack ml="5%" spacing={"25px"}>
-                    <Text fontSize={"sm"} fontWeight="700">
-                      {el.title}
-                    </Text>
-                    <Flex justify={"center"} align={"center"}>
-                      {" "}
-                      Qty:
-                      <Button
-                        variant={"outline"}
-                        bg="gray.200"
-                        isDisabled={NumberOfItems <= 1}
-                        onClick={() => {
-                          setNumberOfItems(NumberOfItems - 1);
-                        }}
-                      >
-                        -1
-                      </Button>
-                      <Button isDisabled={true}>{NumberOfItems}</Button>
-                      <Button
-                        variant={"outline"}
-                        bg="gray.200"
-                        onClick={() => {
-                          setNumberOfItems(NumberOfItems + 1);
-                        }}
-                      >
-                        +1
-                      </Button>
-                    </Flex>
-                  </VStack>
-                  <Spacer />
-                  <VStack>
-                    <Button size={"xs"}>REMOVE</Button>
-                    <Text>Price: ${el.price.split(" ")[1]}</Text>
-                    <Text>Price: ${el.price.split(" ")[1]}</Text>
-                  </VStack>
-                  <Spacer />
-                </Flex>
 
-                {/* Order Details */}
-                <Spacer />
-                <Flex w="38%" m="0 auto">
-                  <Box w={"100%"}>
-                    <Text display={"block"}>ORDER SUMMARY</Text>
-                    <Flex>
-                      <Text>Item Total</Text>
-                      <Spacer />
-                      <Text>$ {el.price.split(" ")[1]}</Text>
-                    </Flex>
-                    <Flex>
-                      <Text>Quantity</Text>
-                      <Spacer />
-                      <Text>{NumberOfItems}</Text>
-                    </Flex>
-                    <Flex>
-                      <Text>Amount Payable</Text>
-                      <Spacer />
-                      <Text>$ {el.price.split(" ")[1] * NumberOfItems}</Text>
-                    </Flex>
+              {cartItems.length > 0 ? cartItems.map((el, i) => {
+                return <Flex key={i}>
+                  {/* Cart Items */}
+                  <Flex bg="white" p="10px" w="60%">
+                    <Center>
+                      <Box>
+                        <Image
+                          src={el.img}
+                          w={["50%", "100%"]}
+                        />
+                      </Box>
+                    </Center>
+                    <VStack ml="5%" spacing={"25px"}>
+                      <Text fontSize={"sm"} fontWeight="700">
+                        {el.title}
+                      </Text>
+                      <Flex justify={"center"} align={"center"}>
+                        {" "}
+                        Qty:
+                        <Button
+                          variant={"outline"}
+                          bg="gray.200"
+                          isDisabled={NumberOfItems <= 1}
+                          onClick={() => {
+                            
+                            setNumberOfItems(NumberOfItems - 1);
+                          }}
+                        >
+                          -1
+                        </Button>
+                        <Button isDisabled={true}>{NumberOfItems}</Button>
+                        <Button
+                          variant={"outline"}
+                          bg="gray.200"
+                          onClick={() => {
+                            setNumberOfItems(NumberOfItems + 1);
+                          }}
+                        >
+                          +1
+                        </Button>
+                      </Flex>
+                    </VStack>
                     <Spacer />
-                    <Flex justify={"center"}>
-                      <Button size="sm">PLACE ORDER</Button>
-                    </Flex>
-                  </Box>
+                    <VStack>
+                      <Button size={"xs"}>REMOVE</Button>
+                      <Text>Price: ${el.price.split(" ")[1]}</Text>
+                      <Text>Price: ${el.price.split(" ")[1]}</Text>
+                    </VStack>
+                    <Spacer />
+                  </Flex>
+
+                  {/* Order Details */}
+                  <Spacer />
+                  <Flex w="38%" m="0 auto">
+                    <Box w={"100%"}>
+                      <Text display={"block"}>ORDER SUMMARY</Text>
+                      <Flex>
+                        <Text>Item Total</Text>
+                        <Spacer />
+                        <Text>$ {el.price.split(" ")[1]}</Text>
+                      </Flex>
+                      <Flex>
+                        <Text>Quantity</Text>
+                        <Spacer />
+                        <Text>{NumberOfItems}</Text>
+                      </Flex>
+                      <Flex>
+                        <Text>Amount Payable</Text>
+                        <Spacer />
+                        <Text>$ {el.price.split(" ")[1] * NumberOfItems}</Text>
+                      </Flex>
+                      <Spacer />
+                      <Flex justify={"center"}>
+                        <Button size="sm">PLACE ORDER</Button>
+                      </Flex>
+                    </Box>
+                  </Flex>
                 </Flex>
-              </Flex>
-              }):(<Flex w={"100%"} h='100%' direction={"column"} align="center" justify="center" >
-    <Spacer />
-        <Box>
-          <Image src="https://www.mirraw.com/assets/empty_cart-37c63834a5d3ec25486445fc32bf710ad0a569dff0cad08f85ac85c2044ba41a.png" width={["5xs", "4xs"]} />
-        </Box>
-        <Box textAlign={"center"} m="10px">
-        <Text fontSize={"lg"} fontWeight="600">Cart is Empty</Text>
-        <Text fontSize={"sm"}>Looks like you have no items in your shopping cart</Text>
-        </Box>
-        <Button onClick={onClose} bg="rgb(177, 31, 43)" color="white">
-          Return to Shop
-        </Button>
-        <Spacer />
-    </Flex>)}
-              
+              }) : (<Flex w={"100%"} h='100%' direction={"column"} align="center" justify="center" >
+                <Spacer />
+                <Box>
+                  <Image src="https://www.mirraw.com/assets/empty_cart-37c63834a5d3ec25486445fc32bf710ad0a569dff0cad08f85ac85c2044ba41a.png" width={["5xs", "4xs"]} />
+                </Box>
+                <Box textAlign={"center"} m="10px">
+                  <Text fontSize={"lg"} fontWeight="600">Cart is Empty</Text>
+                  <Text fontSize={"sm"}>Looks like you have no items in your shopping cart</Text>
+                </Box>
+                <Button onClick={onClose} bg="rgb(177, 31, 43)" color="white">
+                  Return to Shop
+                </Button>
+                <Spacer />
+              </Flex>)}
+
 
 
               {/* Dont know what this is */}
-              
+
             </ModalBody>
           </ModalContent>
         </Modal>
@@ -234,6 +250,7 @@ function LogInLogOut() {
     /* Logout */
   }
   let { state, LogOut } = useContext(AuthContext);
+  let { loginUserID,setLoginUserID,setCartLength ,cartLength,cartItems,setCartItems} = useContext(AuthContext)
   return state ? (
     <Flex
       fontSize={"xs"}
@@ -241,6 +258,9 @@ function LogInLogOut() {
       _hover={{ cursor: "pointer" }}
       onClick={() => {
         LogOut();
+        setCartItems([])
+        setCartLength(0);
+        setLoginUserID({})
       }}
     >
       <Center fontWeight={600}>
