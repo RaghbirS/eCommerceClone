@@ -113,7 +113,7 @@ export function CartLog(){
 <Modal isOpen={isOpen} onClose={onClose} size="6xl" >
   <ModalOverlay  />
   <ModalContent h="60vh">
-    <ModalHeader bg="rgb(48, 48, 48)" p="10px">
+    <ModalHeader bg="rgb(48, 48, 48)" p="10px"> 
       <Flex>
         <Box>
           <Image src={modal} w="90%" />
@@ -121,8 +121,20 @@ export function CartLog(){
       </Flex>
     <ModalCloseButton color={"white"} />
     </ModalHeader>
-    <ModalBody bg="rgb(244, 244, 244)">
-    <Flex w={"100%"} h='100%' direction={"column"} align="center" justify="center" >
+    <ModalBody overflowY={"scroll"} bg="rgb(244, 244, 244)">
+    
+
+
+
+
+
+
+
+
+
+
+    
+    {/* <Flex w={"100%"} h='100%' direction={"column"} align="center" justify="center" >
     <Spacer />
         <Box>
           <Image src="https://www.mirraw.com/assets/empty_cart-37c63834a5d3ec25486445fc32bf710ad0a569dff0cad08f85ac85c2044ba41a.png" width={["5xs", "4xs"]} />
@@ -135,7 +147,7 @@ export function CartLog(){
           Return to Shop
         </Button>
         <Spacer />
-    </Flex>
+    </Flex> */}
     </ModalBody>
 
     

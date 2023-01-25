@@ -13,10 +13,11 @@ import {
     StackDivider,
     useColorModeValue
 } from '@chakra-ui/react';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-
+import { AuthContext } from "../AuthContext/context";
 export default function BigProduct(props) {
+    const {cartItems,setCartItems} = useContext(AuthContext)
     window.scrollTo(0, 0)
     let [apiData,setApiData] = useState({})
     let data = useParams();
@@ -24,6 +25,7 @@ export default function BigProduct(props) {
         let fet = await axios.get(`https://backend-a-pi.vercel.app/${data.categories}/${data.id}`);
         setApiData(fet.data)
     }
+    let img = apiData["lazy-custom src"]==""?apiData["lazy src"]:apiData["lazy-custom src"];
     useEffect(()=>{
         getData()
     },[])
@@ -39,7 +41,7 @@ export default function BigProduct(props) {
                             rounded={'md'}
                             alt={'product image'}
                             src={
-                                apiData["lazy-custom src"]==""?apiData["lazy src"]:apiData["lazy-custom src"]
+                                img
                             }
                             fit={'cover'}
                             align={'center'}
@@ -111,6 +113,15 @@ export default function BigProduct(props) {
                             bg={useColorModeValue('gray.900', 'gray.50')}
                             color={useColorModeValue('white', 'gray.900')}
                             textTransform={'uppercase'}
+                            onClick={()=>{
+                                let data1 = {
+                                    img,
+                                    name:data.name.toUpperCase(),
+                                    price:apiData["effective-price"]
+                                }
+                                setCartItems([...cartItems,data1]);
+                                console.log(cartItems)
+                            }}
                             _hover={{
                                 transform: 'translateY(2px)',
                                 boxShadow: 'lg',
