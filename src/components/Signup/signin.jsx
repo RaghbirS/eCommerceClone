@@ -26,22 +26,24 @@ import { AuthContext } from '../AuthContext/context';
   
   export default function SigninCard() {
     const [showPassword, setShowPassword] = useState(false);
-    const {Login, state} = useContext(AuthContext)
+    const {Login, state,setAlertVal} = useContext(AuthContext)
     let email = useRef(null)
     let password = useRef(null)
 
     async function checkUser(){
-      let data = await axios.get("https://purple-fog-period.glitch.me/users")
-      
-      let users=data.data
+      let data = await axios.get("https://purple-fog-period.glitch.me/users");
+      let users=data.data;
+      let success = false;
       users.map(el=>{
         if(el.email== email.current.value && el.pass == password.current.value){
-          Login()
-         return 
+          Login();
+          success = true;
         } 
-
       })
- 
+      if(success) return;
+      setAlertVal(true);
+      setTimeout(()=>setAlertVal(false),3000)
+
     }
     if(state){
       return <Navigate to="/" />
