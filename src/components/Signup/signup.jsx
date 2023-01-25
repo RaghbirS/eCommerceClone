@@ -30,6 +30,8 @@ import { useContext } from 'react';
     let pass = useRef(null);
     let conPass = useRef(null);
 
+    axios.delete("https://purple-fog-period.glitch.me/users/5")
+
    async function CreateUser(){
     let condition = true
       let user = {

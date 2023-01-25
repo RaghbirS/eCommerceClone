@@ -28,20 +28,6 @@ export default function Products() {
   let [proData, setProDta] = useState([]);
   let [loading, setLoading] = useState(false);
   let da = useParams();
-  //   async function FetchData(param) {
-  //     setLoading(true);
-  //     let data = await axios.get(
-  //       `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
-  //     );
-  //     console.log(data)
-  //     setPageLimit(data.headers["x-total-count"])
-  //     setProDta(data.data);
-  //     setLoading(false);
-  //     window.scrollTo(0, 0)
-  //   }
-  //   useEffect(() => {
-  //     FetchData(da.pro);
-  //   }, [da.pro, page]);
   const FetchData = useCallback(
     async (param) => {
       setLoading(true);
