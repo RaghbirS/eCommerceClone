@@ -4,6 +4,7 @@ import { createContext, useState } from "react";
 export let AuthContext = createContext()
 
 export default function ContextProvider({children}){
+    // For login
     const [state, setState] = useState(false);
     const [alertVal,setAlertVal] = useState(false);
     const [userCreated, setUserCreated] = useState(false);
