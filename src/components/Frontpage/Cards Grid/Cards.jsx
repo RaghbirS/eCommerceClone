@@ -21,19 +21,19 @@ let cardImgs=["https://assets0.mirraw.com/frontpages/12979/rtru_main_webp.webp?1
 ]
 let cardImgsTitle=["Tops", "Tunics", "Dresses", "Dress Material", "Anklets", "Bangles", "Maang Tikka", "Kamarbandh", "Ecraft INDIA", "Home & Living", "Wardrobe Organizers", "Jewellery Boxes", "Prestitched Sarees", "Ruffle Sarees", "Stylee lifestyle", "Plus Size Kurtis"]
 export default function Cards(){
-    return  <Grid templateColumns={["repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(4, 1fr)"]} gap={6} w="80%" m="auto">
+    return  <Grid templateColumns={["repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(4, 1fr)"]} gap={6} w="100%" m="auto">
     {cardImgs.map((pics,i)=>{
-        return <GridItem w='100%' h="auto" key={i}><Card w='100%'>
+        return <GridItem w='100%' h="auto" key={i} overflow="hidden"><Card w='100%'>
     <CardBody className={Styles.cardBody}>
       <Image
         src={pics}
         alt='Green double couch with wooden legs'
         borderRadius='lg'
         // w={["xs","sm","lg", "full", "full"]}
-        maxW={["100px", "200px", "full"]}
+        maxW={["auto", "auto", "full"]}
       />
       <Stack mt="-5" spacing='3'>
-      <Button variant='outline' colorScheme='black' bg="rgba(0,0,0,0.5)" color="white" fontSize={["2xs","xs","sm"]} textAlign="left" maxW={["100px", "200px", "full"]}>
+      <Button variant='outline' colorScheme='black' bg="rgba(0,0,0,0.5)" color="white" fontSize={["2xs","xs","sm"]} textAlign="left" maxW={["auto", "auto", "full"]}>
           {cardImgsTitle[i]}
         </Button>
       </Stack>

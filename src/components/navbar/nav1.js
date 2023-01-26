@@ -163,7 +163,6 @@ export function CartLog() {
                           bg="gray.200"
                           isDisabled={NumberOfItems <= 1}
                           onClick={() => {
-                            console.log(el)
                             setNumberOfItems(NumberOfItems - 1);
                           }}
                         >
