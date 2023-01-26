@@ -16,16 +16,6 @@ export default function MainProductfilter(){
     return(
         <Flex display={["none","none","none","flex"]} flexDir="column" gap="10px" overflowY="scroll" p="10px" w="15vw" top="0" position="sticky" h="100vh" >
             <ProductFilter1/>
-            <ProductFilter2/>
-            <ProductFilter3/>
-            <ProductFilter4/>
-            <ProductFilter5/>
-            <ProductFilter6/>
-            <ProductFilter7/>
-            <ProductFilter8/>
-            <ProductFilter9/>
-            <ProductFilter10/>
-            <ProductFilter11/>
         </Flex>
     )
 }

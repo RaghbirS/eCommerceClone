@@ -11,12 +11,13 @@ export default function ContextProvider({children}){
     const [userExists, setUserExists] = useState(false);
     const [cartItems,setCartItems] = useState([]);
     const [loginUserID,setLoginUserID] = useState()
-    let [cartLength,setCartLength] = useState(0)
+    let [cartLength,setCartLength] = useState(0);
+    let [sortBasis,setSortBasis] = useState("Default")
     function Login(){
         setState(true)
     }
     function LogOut(){
         setState(false)
     }
-    return <AuthContext.Provider value={{state,Login, LogOut,alertVal,setAlertVal, userCreated,setUserCreated,userExists, setUserExists,cartItems,setCartItems,loginUserID,setLoginUserID,cartLength,setCartLength}}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{state,Login, LogOut,alertVal,setAlertVal, userCreated,setUserCreated,userExists, setUserExists,cartItems,setCartItems,loginUserID,setLoginUserID,cartLength,setCartLength,sortBasis,setSortBasis}}>{children}</AuthContext.Provider>
 }
