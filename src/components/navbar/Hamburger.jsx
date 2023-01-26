@@ -66,7 +66,7 @@ let {LogOut} = useContext(AuthContext)
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    <NavLink to="/products/saree">All Sarees</NavLink>
+                    <NavLink to="/products/saree" onClick={onClose}>All Sarees</NavLink>
                   </Box>
                 </AccordionPanel>
               </AccordionItem>
@@ -83,7 +83,7 @@ let {LogOut} = useContext(AuthContext)
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    <NavLink to="/products/Lehengas">Lehengas</NavLink>
+                    <NavLink to="/products/Lehengas" onClick={onClose}>Lehengas</NavLink>
                   </Box>
                 </AccordionPanel>
               </AccordionItem>
@@ -100,7 +100,7 @@ let {LogOut} = useContext(AuthContext)
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    <NavLink to="/products/SalwarKameez">Salwar Kameex</NavLink>
+                    <NavLink to="/products/salwaarKameez" onClick={onClose}>Salwar Kameex</NavLink>
                   </Box>
                 </AccordionPanel>
               </AccordionItem>
@@ -117,7 +117,7 @@ let {LogOut} = useContext(AuthContext)
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    <NavLink to="/products/kurtis">Kurtis</NavLink>
+                    <NavLink to="/products/kurtis" onClick={onClose}>Kurtis</NavLink>
                   </Box>
                 </AccordionPanel>
               </AccordionItem>
@@ -134,7 +134,7 @@ let {LogOut} = useContext(AuthContext)
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    <NavLink to="/products/jewellary">Jewellery</NavLink>
+                    <NavLink to="/products/jewellary" onClick={onClose}>Jewellery</NavLink>
                   </Box>
                 </AccordionPanel>
               </AccordionItem>
@@ -151,7 +151,7 @@ let {LogOut} = useContext(AuthContext)
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    <NavLink to="/products/mens">Men</NavLink>
+                    <NavLink to="/products/mens" onClick={onClose}>Men</NavLink>
                   </Box>
                 </AccordionPanel>
               </AccordionItem>
@@ -168,7 +168,7 @@ let {LogOut} = useContext(AuthContext)
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    <NavLink to="/products/kids">Kids</NavLink>
+                    <NavLink to="/products/kids" onClick={onClose}>Kids</NavLink>
                   </Box>
                 </AccordionPanel>
               </AccordionItem>
@@ -185,7 +185,7 @@ let {LogOut} = useContext(AuthContext)
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    <NavLink to="/products/homeliving">Home & Living</NavLink>
+                    <NavLink to="/products/homeLiving" onClick={onClose}>Home & Living</NavLink>
                   </Box>
                 </AccordionPanel>
               </AccordionItem>
@@ -202,7 +202,7 @@ let {LogOut} = useContext(AuthContext)
                 </h2>
                 <AccordionPanel pb={4}>
                   <Box>
-                    <NavLink to="/products/spiritual">Spiritual</NavLink>
+                    <NavLink to="/products/spiritual" onClick={onClose}>Spiritual</NavLink>
                   </Box>
                 </AccordionPanel>
               </AccordionItem>
