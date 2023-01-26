@@ -183,8 +183,8 @@ export function CartLog() {
                     <Spacer />
                     <VStack>
                       <Button size={"xs"}>REMOVE</Button>
-                      <Text>Price: ${el.price.split(" ")[1]}</Text>
-                      <Text>Price: ${el.price.split(" ")[1]}</Text>
+                      <Text>Price: ${el.price}</Text>
+                      <Text>Price: ${el.price}</Text>
                     </VStack>
                     <Spacer />
                   </Flex>
@@ -197,7 +197,7 @@ export function CartLog() {
                       <Flex>
                         <Text>Item Total</Text>
                         <Spacer />
-                        <Text>$ {el.price.split(" ")[1]}</Text>
+                        <Text>$ {el.price}</Text>
                       </Flex>
                       <Flex>
                         <Text>Quantity</Text>
@@ -207,7 +207,7 @@ export function CartLog() {
                       <Flex>
                         <Text>Amount Payable</Text>
                         <Spacer />
-                        <Text>$ {el.price.split(" ")[1] * NumberOfItems}</Text>
+                        <Text>$ {el.price * NumberOfItems}</Text>
                       </Flex>
                       <Spacer />
                       <Flex justify={"center"}>
