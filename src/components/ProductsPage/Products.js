@@ -14,37 +14,45 @@ import {
   AccordionIcon,
   AccordionPanel,
 } from "@chakra-ui/react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import ProductCard from "./productCards";
 import MainProductfilter from "./ProductFilter/mainFilterProduct";
 import axios from "axios";
 import { NavLink, useParams } from "react-router-dom";
 import Skeleteon from "../Features/Carousel/skeleton";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { AuthContext } from "../AuthContext/context";
 
 export default function Products() {
   let [page, setPage] = useState(1);
   let [pageLimit, setPageLimit] = useState(0);
   let [proData, setProDta] = useState([]);
   let [loading, setLoading] = useState(false);
+  let {sortBasis,setSortBasis} = useContext(AuthContext)
   let da = useParams();
-  const FetchData = useCallback(
-    async (param) => {
-      setLoading(true);
-      let data = await axios.get(
-        `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
-      );
-      setPageLimit(data.headers["x-total-count"]);
-      setProDta(data.data);
-      setLoading(false);
-      window.scrollTo(0, 0);
-    },
-    [da.pro, page]
-  );
+  const FetchData = async (param) => {
+    setLoading(true);
+    let data;
+    //
+    if(sortBasis=="Default") data = await axios.get(
+      `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
+    );
+    else if(sortBasis=="HighToLow") data = await axios.get(
+      `https://backend-a-pi.vercel.app/${param}?_sort=effective-price&_order=desc&_page=${page}&_limit=35`
+    );
+    else data = await axios.get(
+      `https://backend-a-pi.vercel.app/${param}?_sort=effective-price&_order=asc&_page=${page}&_limit=35`
+    );
+    setPageLimit(data.headers["x-total-count"]);
+    setProDta(data.data);
+    setLoading(false);
+    window.scrollTo(0, 0);
+    console.log(sortBasis)
+  }
 
   useEffect(() => {
     FetchData(da.pro);
-  }, [FetchData]);
+  }, [page,sortBasis]);
   return (
     <>
       <Flex justify="center" width="100vw">
