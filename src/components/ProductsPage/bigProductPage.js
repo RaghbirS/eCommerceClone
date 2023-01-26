@@ -21,7 +21,6 @@ async function addToCart(userID,newItem){
     if(userID==undefined) return;
     let data = await axios.get(`https://festive-candle-fontina.glitch.me/shop/${userID}`);
     let cartItems = data.data.cart;
-    console.log(cartItems)
 
 
     axios.patch(`https://festive-candle-fontina.glitch.me/shop/${userID}`,{

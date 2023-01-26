@@ -83,7 +83,7 @@ export default function Nav1() {
 
 export function CartLog() {
   let { loginUserID,setCartLength ,cartLength,cartItems,setCartItems} = useContext(AuthContext)
-  let [NumberOfItems, setNumberOfItems] = useState(0);
+  let [NumberOfItems, setNumberOfItems] = useState(1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   async function get(userID) {
     if(!userID) return;
@@ -91,7 +91,6 @@ export function CartLog() {
     let apiCartData = data.data.cart;
     setCartLength(apiCartData.length)
     setCartItems(apiCartData)
-    console.log("HEllo")
   }
 
   useEffect(() => {
@@ -164,7 +163,7 @@ export function CartLog() {
                           bg="gray.200"
                           isDisabled={NumberOfItems <= 1}
                           onClick={() => {
-                            
+                            console.log(el)
                             setNumberOfItems(NumberOfItems - 1);
                           }}
                         >
