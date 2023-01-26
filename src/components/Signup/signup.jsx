@@ -38,7 +38,7 @@ import { useContext } from 'react';
         conPass: conPass.current.value,
         cart:[]
       }
-      let data = await axios.get("https://festive-candle-fontina.glitch.me/shop")
+      let data = await axios.get("https://e-commerce-api-sncm.onrender.com/users")
 
       let users= data.data
 
@@ -50,7 +50,7 @@ import { useContext } from 'react';
         }
       });
          if (condition){
-          axios.post("https://festive-candle-fontina.glitch.me/shop",user)
+          axios.post("https://e-commerce-api-sncm.onrender.com/users",user)
         }
         setUserCreated(true)
         setTimeout(()=>setUserCreated(false),3000)

@@ -25,19 +25,9 @@ export default function Nav3() {
                     <Navdrop2 />
                 </Box>
                 <Box className="navHove3" >
-                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/products/SalwarKameez">SalwarKameez</NavLink>
+                    <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/products/salwaarKameez">SalwarKameez</NavLink>
                     <Navdrop3 />
                 </Box>
-                {/* <Route path='/Lehengas' element={<p>Lehengas</p>}></Route>
-        <Route path='/SalwarKameez' element={<p>SalwarKameez</p>}></Route>
-        <Route path='/Kurtis' element={<p>Kurtis</p>}></Route>
-        <Route path='/Jewellery' element={<p>Jewellery</p>}></Route>
-        <Route path='/Kids' element={<p>Kids</p>}></Route>
-        <Route path='/Men' element={<p>Men</p>}></Route>
-        <Route path='/Home&Living' element={<p>Home&Living</p>}></Route>
-        <Route path='/Luxe' element={<p>Luxe</p>}></Route>
-        <Route path='/Spiritual' element={<p>Spiritual</p>}></Route>
-        <Route path='/Collections' element={<p>Collections</p>}></Route> */}
                 <Box className="navHove4" >
                     <NavLink _hover={{ borderBottom: "2px solid #670b19" }} to="/products/kurtis">Kurtis</NavLink>
                     <Navdrop4 />

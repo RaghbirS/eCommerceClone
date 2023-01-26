@@ -26,22 +26,4 @@ const Carousel = () => {
 }
 
 
-export function ReviewCarousel(){
-  // const [shift, setShift] = useState(0)
-  // return <Flex alignItems={"center"} position="relative" justifyItems="center" w="100vw">
-  // <button left="15%" onClick={()=>{
-  //   setShift(0)
-  // }}  bg="transparent">Left</button>
-  //   <Flex w="60vw" overflow="hidden" m="auto" h="15vw" position={"relative"}>
-  //   <Flex w="200%" flexShrink={0} mr={`${shift}%`}>
-  //   <Image src={ReviewImage1} w="50%" />
-  //   <Image src={ReviewImage2} w="50%" />
-  //   </Flex>
-  // </Flex>
-  //   <button right="15%" onClick={()=>{
-  //     setShift(50)
-  //   }}   bg="transparent">Right</button>
-  // </Flex>
-}
-
 export default Carousel

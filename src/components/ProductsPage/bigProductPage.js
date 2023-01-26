@@ -19,11 +19,11 @@ import { AuthContext } from "../AuthContext/context";
 
 async function addToCart(userID,newItem){
     if(userID==undefined) return;
-    let data = await axios.get(`https://festive-candle-fontina.glitch.me/shop/${userID}`);
+    let data = await axios.get(`https://e-commerce-api-sncm.onrender.com/users/${userID}`);
     let cartItems = data.data.cart;
 
 
-    axios.patch(`https://festive-candle-fontina.glitch.me/shop/${userID}`,{
+    axios.patch(`https://e-commerce-api-sncm.onrender.com/users/${userID}`,{
         cart:[...cartItems,newItem]
     })
 }
@@ -34,7 +34,7 @@ export default function BigProduct(props) {
     let [apiData,setApiData] = useState({})
     let data = useParams();
     async function getData(){
-        let fet = await axios.get(`https://backend-a-pi.vercel.app/${data.categories}/${data.id}`);
+        let fet = await axios.get(`https://e-commerce-api-sncm.onrender.com/${data.categories}/${data.id}`);
         setApiData(fet.data)
     }
     let img = apiData["lazy-custom src"]==""?apiData["lazy src"]:apiData["lazy-custom src"];

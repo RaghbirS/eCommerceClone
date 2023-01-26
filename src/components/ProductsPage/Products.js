@@ -32,7 +32,7 @@ export default function Products() {
     async (param) => {
       setLoading(true);
       let data = await axios.get(
-        `https://backend-a-pi.vercel.app/${param}?_page=${page}&_limit=35`
+        `https://e-commerce-api-sncm.onrender.com/${param}?_page=${page}&_limit=35`
       );
       setPageLimit(data.headers["x-total-count"]);
       setProDta(data.data);
@@ -107,11 +107,6 @@ export default function Products() {
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
-            {/* <MenuItem>Download</MenuItem>
-            <MenuItem>Create a Copy</MenuItem>
-            <MenuItem>Mark as Draft</MenuItem>
-            <MenuItem>Delete</MenuItem>
-            <MenuItem>Attend a Workshop</MenuItem> */}
           </MenuList>
         </Menu>
         <Spacer />
