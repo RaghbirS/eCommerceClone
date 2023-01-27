@@ -20,24 +20,22 @@ import { CartProductMeta } from "./CartProductMeta";
 import { PriceTag } from "./PriceTag";
 
 export default function Cart() {
-  let { loginUserID, total, setTotal } = useContext(AuthContext);
-  let [cartData, setCartData] = useState([]);
+  let { loginUserID, total, setTotal, cartItems, setCartItems } = useContext(AuthContext);
+  // let [cartItems, setCartItems] = useState([]);
   async function getData() {
-    if(loginUserID?.id== undefined){
-        return
+    if (loginUserID?.id == undefined) {
+      return
     }
     let data = await axios.get(
       `https://e-commerce-api-sncm.onrender.com/users/${loginUserID.id}`
     );
     let userData = data.data.cart;
-
-    setCartData(userData);
-    // console.log(cartData)
+    setCartItems(userData);
   }
   useEffect(() => {
     getData();
     let Totaltemp = 0;
-    for (const items of cartData) {
+    for (const items of cartItems) {
       let Temp = items.qty * items.price;
       Totaltemp += Temp;
     }
@@ -82,17 +80,18 @@ export default function Cart() {
           flex="2"
         >
           <Heading fontSize="2xl" fontWeight="extrabold">
-            Shopping Cart ({cartData.length} items)
+            Shopping Cart ({cartItems.length} items)
           </Heading>
 
           <Stack spacing="6">
-            {cartData.map((item, i) => (
+            {cartItems.map((item, i) => (
               <CartItem
                 key={item.id + item.name}
                 {...item}
-                cartData={cartData}
+                cartItems={cartItems}
                 index={i}
                 qty={item.qty}
+                setCartItems={setCartItems}
               />
             ))}
           </Stack>
@@ -127,7 +126,7 @@ const QuantitySelect = (props) => {
   );
 };
 export const CartItem = (props) => {
-  let { loginUserID, total, setTotal } = useContext(AuthContext);
+  let { loginUserID, total, setTotal,setCartLength } = useContext(AuthContext);
   const {
     name,
     description,
@@ -135,32 +134,33 @@ export const CartItem = (props) => {
     img,
     currency,
     price,
-    onClickDelete,
-    cartData,
+    setCartItems,
+    cartItems,
     index,
     qty
   } = props;
   function updateQuantity(index, value) {
-    if(loginUserID.id== undefined){
-        return
+    if (loginUserID.id == undefined) {
+      return
     }
-    cartData[index].qty = +value;
+    cartItems[index].qty = +value;
     axios.patch(
       `https://e-commerce-api-sncm.onrender.com/users/${loginUserID.id}`,
       {
-        cart: cartData,
+        cart: cartItems,
       }
     );
   }
-  let [newPrice, setNewPrice] = useState(price*qty);
-  useEffect(()=>{
+  let [newPrice, setNewPrice] = useState(price * qty);
+  useEffect(() => {
     let Totaltemp = 0;
-            for (const items of cartData) {
-              let Temp = items.qty * items.price;
-              Totaltemp += Temp;
-            }
-            setTotal(Totaltemp);
-  },[newPrice])
+    for (const items of cartItems) {
+      let Temp = items.qty * items.price;
+      Totaltemp += Temp;
+    }
+    setTotal(Totaltemp);
+    console.log("hello")
+  }, [newPrice, cartItems])
   return (
     <Flex
       direction={{
@@ -197,7 +197,20 @@ export const CartItem = (props) => {
         <PriceTag price={newPrice} currency={currency} quantity={quantity} />
         <CloseButton
           aria-label={`Delete ${name} from cart`}
-          onClick={onClickDelete}
+          onClick={()=>{
+            let tempCart = [...cartItems];
+            tempCart.splice(index,1);
+            setCartItems(tempCart);
+            setCartLength((prev)=>prev-1);
+            if(tempCart.length==0) setTotal(0)
+            axios.patch(
+              `https://e-commerce-api-sncm.onrender.com/users/${loginUserID.id}`,
+              {
+                cart: tempCart,
+              }
+            );
+          }}
+          
         />
       </Flex>
 
@@ -212,7 +225,19 @@ export const CartItem = (props) => {
           md: "none",
         }}
       >
-        <Link fontSize="sm" textDecor="underline">
+        <Link  fontSize="sm" textDecor="underline" onClick={()=>{
+            let tempCart = [...cartItems];
+            tempCart.splice(index,1);
+            setCartItems(tempCart);
+            setCartLength((prev)=>prev-1);
+            if(tempCart.length==0) setTotal(0)
+            axios.patch(
+              `https://e-commerce-api-sncm.onrender.com/users/${loginUserID.id}`,
+              {
+                cart: tempCart,
+              }
+            );
+          }}>
           Delete
         </Link>
         <QuantitySelect

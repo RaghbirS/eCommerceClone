@@ -17,30 +17,46 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../AuthContext/context";
 
-async function addToCart(userID,newItem){
-    if(userID==undefined) return;
-    let data = await axios.get(`https://e-commerce-api-sncm.onrender.com/users/${userID}`);
-    let cartItems = data.data.cart;
+async function addToCart(userID, newItem, cartItems, setCartItems,setCartLength) {
+    if (userID == undefined) return;
+    // let data = await axios.get(`https://e-commerce-api-sncm.onrender.com/users/${userID}`);
+    // let cartItems = data.data.cart;
 
 
-    axios.patch(`https://e-commerce-api-sncm.onrender.com/users/${userID}`,{
-        cart:[...cartItems,newItem]
+    // axios.patch(`https://e-commerce-api-sncm.onrender.com/users/${userID}`, {
+    //     cart: [...cartItems, newItem]
+    // })
+    let tempCartItems = [...cartItems];
+    for (let i = 0; i < tempCartItems.length; i++) {
+        if (tempCartItems[i].name == newItem.name) {
+            tempCartItems[i].qty = tempCartItems[i].qty + 1;
+            setCartItems(tempCartItems);
+            axios.patch(`https://e-commerce-api-sncm.onrender.com/users/${userID}`, {
+                cart: tempCartItems
+            })
+            return
+        }
+    }
+    setCartItems([...tempCartItems, newItem]);
+    axios.patch(`https://e-commerce-api-sncm.onrender.com/users/${userID}`, {
+        cart: [...tempCartItems, newItem]
     })
+    setCartLength((prev) => prev + 1)
+
 }
 export default function BigProduct(props) {
-    let {loginUserID,setCartLength} = useContext(AuthContext);
-    const {cartItems,setCartItems} = useContext(AuthContext)
+    let { loginUserID, setCartLength, cartItems, setCartItems } = useContext(AuthContext);
     window.scrollTo(0, 0)
-    let [apiData,setApiData] = useState({})
+    let [apiData, setApiData] = useState({})
     let data = useParams();
-    async function getData(){
+    async function getData() {
         let fet = await axios.get(`https://e-commerce-api-sncm.onrender.com/${data.categories}/${data.id}`);
         setApiData(fet.data)
     }
-    let img = apiData["lazy-custom src"]==""?apiData["lazy src"]:apiData["lazy-custom src"];
-    useEffect(()=>{
+    let img = apiData["lazy-custom src"] == "" ? apiData["lazy src"] : apiData["lazy-custom src"];
+    useEffect(() => {
         getData()
-    },[])
+    }, [])
     return (
         <>
             <Container maxW={'7xl'}>
@@ -68,11 +84,12 @@ export default function BigProduct(props) {
                                 fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
                                 {data.name.toUpperCase()}
                             </Heading>
-                            <Flex 
+                            <Flex
                                 color={useColorModeValue('gray.900', 'gray.400')}
-                                fontWeight={300}
+                                fontWeight={700}
                                 fontSize={'2xl'}>
-                                {apiData["effective-price"]}
+                                    $ 
+                                {apiData["effective-price"] || "0.00"} 
                                 <Text color={"red"} fontWeight={"600"} ml={"10px"}>{apiData["red-discount-percentage"]}</Text>
                             </Flex>
                         </Box>
@@ -112,7 +129,7 @@ export default function BigProduct(props) {
                                 <Flex flexDir={"column"}>
 
                                 </Flex>
-                                
+
                             </Box>
                         </Stack>
 
@@ -125,17 +142,17 @@ export default function BigProduct(props) {
                             bg={useColorModeValue('gray.900', 'gray.50')}
                             color={useColorModeValue('white', 'gray.900')}
                             textTransform={'uppercase'}
-                            onClick={async ()=>{
+                            onClick={async () => {
                                 let data1 = {
                                     img,
-                                    name:data.name.toUpperCase(),
-                                    price:apiData["effective-price"],
-                                    qty:1,
-                                    id:data.id
+                                    name: data.name.toUpperCase(),
+                                    price: apiData["effective-price"],
+                                    qty: 1,
+                                    id: data.id
                                 }
-                                setCartLength((prev)=>prev+1)
-                                setCartItems([...cartItems,data1]);
-                                addToCart(loginUserID?.id,data1)
+                                // setCartLength((prev) => prev + 1)
+                                // setCartItems([...cartItems, data1]);
+                                addToCart(loginUserID?.id, data1, cartItems, setCartItems,setCartLength);
                             }}
                             _hover={{
                                 transform: 'translateY(2px)',

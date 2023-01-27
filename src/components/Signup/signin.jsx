@@ -30,7 +30,8 @@ async function Id(name,func){
     if(el.email==name){
       let id = el.id;
       let email = el.email;
-      func({id,email})
+      func({id,email});
+      localStorage.setItem("loginUserID",JSON.stringify({id,email}))
     }
   });
 }

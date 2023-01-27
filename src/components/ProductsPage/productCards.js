@@ -19,7 +19,7 @@ export default function ProductCard(props) {
                             </Text>
                             <Heading size='xs' textTransform='uppercase'>
                                 <Flex gap={"10px"}>
-                                    <Box>₹ {props.price}</Box>
+                                    <Box>$ {props.price}</Box>
                                     <Box color={"red"}>{props.discount}</Box>
                                 </Flex>
 
