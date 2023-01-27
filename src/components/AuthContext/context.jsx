@@ -21,6 +21,7 @@ export default function ContextProvider({children}){
     function LogOut(){
         setState(false)
         localStorage.setItem("loginStatus",JSON.stringify(false))
+        localStorage.setItem("loginUserID",JSON.stringify({}))
     }
     return <AuthContext.Provider value={{state,Login, LogOut,alertVal,setAlertVal, userCreated,setUserCreated,userExists, setUserExists,cartItems,setCartItems,loginUserID,setLoginUserID,cartLength,setCartLength,sortBasis,setSortBasis, total, setTotal}}>{children}</AuthContext.Provider>
 }
