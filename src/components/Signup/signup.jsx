@@ -11,7 +11,6 @@ import {
     Button,
     Heading,
     Text,
-    useColorModeValue,
     Link,
     Divider,
     Image,
@@ -19,19 +18,74 @@ import {
   import { useRef, useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import axios from 'axios';
-import {  NavLink } from 'react-router-dom';
+import {  Navigate, NavLink } from 'react-router-dom';
 import { AuthContext } from '../AuthContext/context';
 import { useContext } from 'react';
   
   export default function SignupCard() {
     let {setUserCreated, setUserExists} = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
+    let [isValid, setValid] = useState(false)
     let mail = useRef(null);
     let pass = useRef(null);
     let conPass = useRef(null);
-
+function isValidPassword(password) {
+      // Minimum password length
+      let minLength = 8;
+      
+      // Regular expression to check for at least one letter and one number
+      let letterNumber = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/;
+      
+      // Regular expression to check for at least one special character
+      let specialChar = /[!@#$%^&*(),.?":{}|<>]/;
+    
+      // Check password length
+      if (password.length < minLength) {
+        return false;
+      }
+      
+      // Check for letter and number
+      if (!password.match(letterNumber)) {
+        return false;
+      }
+      
+      // Check for special character
+      if (!password.match(specialChar)) {
+        return false;
+      }
+      
+      // If all checks pass, return true
+      return true;
+    }
+    function isValidEmail(email) {
+      // Regular expression for email validation
+      let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      
+      // Test email against regular expression
+      if (email.match(emailRegex)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    
    async function CreateUser(){
     let condition = true
+    if(isValidEmail(mail.current.value) == false && (isValidPassword(pass.current.value)== false && pass.current.value != conPass.current.value))  {
+      alert("Check Your Email and Password Again!")
+      return
+    }
+    else if(isValidEmail(mail.current.value) == false){
+      alert("Check you Email Again!")
+      return
+    } 
+    else if(isValidPassword(pass.current.value)== false && pass.current.value != conPass.current.value){
+      alert("Use atleast One Special, Capital and Numerical Character")
+      return
+    } else{
+      setValid(true)
+    }
+    
       let user = {
         email:mail.current.value,
         pass:pass.current.value,
@@ -52,21 +106,24 @@ import { useContext } from 'react';
          if (condition){
           axios.post("https://e-commerce-api-sncm.onrender.com/users",user)
         }
+        
         setUserCreated(true)
         setTimeout(()=>setUserCreated(false),3000)
     }
-  
+    if(isValid){
+      return <Navigate to="/signin" />
+    }
     return (
       <Flex
         minH={'50vh'}
         align={'center'}
         justify={'center'}
-        bg={useColorModeValue('gray.50', 'gray.800')}>
+        bg={'gray.50'}>
         <Stack spacing={8} mx={'auto'} w={'xl'} py={12} px={6}>
           
           <Box
             rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
+            bg={'white'}
             boxShadow={'0 1px 20px rgb(0 0 0 / 19%), 0px 0px 6px rgb(0 0 0 / 23%)'}
             w="80%"
             m="auto"
@@ -100,7 +157,7 @@ import { useContext } from 'react';
               <FormControl id="Confirmpassword" isRequired>
                 {/* Confirm Password */}
                 <InputGroup>
-                  <Input ref={conPass} type={showPassword ? 'text' : 'password'} placeholder="Confirm Password" />
+                  <Input ref={conPass} isRequired type={showPassword ? 'text' : 'password'} placeholder="Confirm Password" />
                   <InputRightElement h={'full'}>
                     <Button
                       variant={'ghost'}
@@ -122,7 +179,7 @@ import { useContext } from 'react';
               </FormControl>.
               {/* Sign up Button */}
               <Stack spacing={10}>
-                <NavLink to="/signin" style={{margin:"auto", width:"100%"}}>
+                
                 <Button
                   loadingText="Submitting"
                   size="sm"
@@ -136,7 +193,6 @@ import { useContext } from 'react';
                   }}>
                   Sign up
                 </Button>
-                </NavLink>
               </Stack>
 
               <Divider borderBottom={"1px solid black"} />
@@ -151,7 +207,7 @@ import { useContext } from 'react';
               <Link><Box ><Image src="https://www.mirraw.com/assets/google_sing_in-3426a2d2b760db2be7127653d216d7578e499c5e7df25fea1f861a56108d7d5b.png" /></Box></Link>
               </HStack>
                 <Text align={'center'}>
-                  Have an Account? <Link color={'blue.400'}>Sign In</Link>
+                  Have an Account? <NavLink to="/signin" color={'blue.400'}>Sign In</NavLink>
                 </Text>
               </Stack>
             </Stack>

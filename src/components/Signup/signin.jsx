@@ -132,7 +132,7 @@ async function Id(name,func){
 
               <Box>
               <Text align={'center'} fontSize="xs">
-                  Don't have an Account? <NavLink style={{color:"blue",textDecoration:"underline"}}>Create account</NavLink>
+                  Don't have an Account? <NavLink to="/signup" style={{color:"blue",textDecoration:"underline"}}>Create account</NavLink>
                 </Text>
               <Text align={'center'} fontSize="xs">
                   Didn't received confirmation? <NavLink style={{color:"blue", textDecoration:"underline"}}>Resend confirmation link</NavLink>
