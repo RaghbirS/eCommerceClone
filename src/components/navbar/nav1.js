@@ -109,8 +109,8 @@ export function CartLog() {
           width="45%"
           bg="white"
           _hover={{ background: "white" }}
-          onClick={onOpen}
         >
+        <NavLink to="/cart">
           <Center>
             <svg
               style={{ height: "15px", margin: "0 0 0 10px" }}
@@ -121,6 +121,7 @@ export function CartLog() {
             </svg>
             CART{`(${cartLength})`}
           </Center>
+        </NavLink>
         </Flex>
 
       </Flex>

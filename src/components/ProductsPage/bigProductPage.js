@@ -129,7 +129,9 @@ export default function BigProduct(props) {
                                 let data1 = {
                                     img,
                                     name:data.name.toUpperCase(),
-                                    price:apiData["effective-price"]
+                                    price:apiData["effective-price"],
+                                    qty:1,
+                                    id:data.id
                                 }
                                 setCartLength((prev)=>prev+1)
                                 setCartItems([...cartItems,data1]);
