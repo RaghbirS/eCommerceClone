@@ -10,6 +10,7 @@ import FAQ from './components/Footer/FooterComponents/faq';
 import BigProduct from './components/ProductsPage/bigProductPage';
 import { Box } from '@chakra-ui/react';
 import AlertCompo, { CustomAlert, UserExistsAlert } from './components/alertCompo/alertCompo';
+import Cart from './components/Frontpage/Cart/Cart';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/products/:categories/:name/:id' element={<BigProduct/>}></Route>
         <Route path='/' element={<Frontpage />}></Route>
         <Route path='/faq' element={<FAQ />}></Route>
+        <Route path='/cart' element={<Cart />}></Route>
       </Routes>
       <Footer />
     </>

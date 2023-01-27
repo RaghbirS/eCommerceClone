@@ -25,7 +25,6 @@ import modal from "../database/Imgs/modal.png";
 
 // } from '@chakra-ui/react'
 import styles from "./nav.module.css";
-import { CloseIcon } from "@chakra-ui/icons";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthContext/context";
 import axios from "axios";
@@ -63,7 +62,7 @@ export default function Nav1() {
           Sell On Mirraw <span>|</span>
         </NavLink>
         <NavLink className={styles.marginNav}> Survey<span>|</span></NavLink>
-        <NavLink className={styles.marginNav}> {loginUserID?.email || "none"}</NavLink>
+        <NavLink className={styles.marginNav}> {loginUserID?.email || "Login"}</NavLink>
       </Flex>
 
       {/* Login and Cart */}
@@ -124,120 +123,6 @@ export function CartLog() {
           </Center>
         </Flex>
 
-        {/* Cart Modal */}
-        <Modal isOpen={isOpen} onClose={onClose} size="6xl">
-          <ModalOverlay />
-          <ModalContent h="60vh">
-            <ModalHeader bg="rgb(48, 48, 48)" p="10px">
-              <Flex>
-                <Box>
-                  <Image src={modal} w="90%" />
-                </Box>
-              </Flex>
-              <ModalCloseButton color={"white"} />
-            </ModalHeader>
-            <ModalBody overflowY={"scroll"} bg="rgb(244, 244, 244)">
-              {/* Card Body */}
-
-              {cartItems.length > 0 ? cartItems.map((el, i) => {
-                return <Flex key={i}>
-                  {/* Cart Items */}
-                  <Flex bg="white" p="10px" w="60%">
-                    <Center>
-                      <Box>
-                        <Image
-                          src={el.img}
-                          w={["50%", "100%"]}
-                        />
-                      </Box>
-                    </Center>
-                    <VStack ml="5%" spacing={"25px"}>
-                      <Text fontSize={"sm"} fontWeight="700">
-                        {el.title}
-                      </Text>
-                      <Flex justify={"center"} align={"center"}>
-                        {" "}
-                        Qty:
-                        <Button
-                          variant={"outline"}
-                          bg="gray.200"
-                          isDisabled={NumberOfItems <= 1}
-                          onClick={() => {
-                            setNumberOfItems(NumberOfItems - 1);
-                          }}
-                        >
-                          -1
-                        </Button>
-                        <Button isDisabled={true}>{NumberOfItems}</Button>
-                        <Button
-                          variant={"outline"}
-                          bg="gray.200"
-                          onClick={() => {
-                            setNumberOfItems(NumberOfItems + 1);
-                          }}
-                        >
-                          +1
-                        </Button>
-                      </Flex>
-                    </VStack>
-                    <Spacer />
-                    <VStack>
-                      <Button size={"xs"}>REMOVE</Button>
-                      <Text>Price: ${el.price}</Text>
-                      <Text>Price: ${el.price}</Text>
-                    </VStack>
-                    <Spacer />
-                  </Flex>
-
-                  {/* Order Details */}
-                  <Spacer />
-                  <Flex w="38%" m="0 auto">
-                    <Box w={"100%"}>
-                      <Text display={"block"}>ORDER SUMMARY</Text>
-                      <Flex>
-                        <Text>Item Total</Text>
-                        <Spacer />
-                        <Text>$ {el.price}</Text>
-                      </Flex>
-                      <Flex>
-                        <Text>Quantity</Text>
-                        <Spacer />
-                        <Text>{NumberOfItems}</Text>
-                      </Flex>
-                      <Flex>
-                        <Text>Amount Payable</Text>
-                        <Spacer />
-                        <Text>$ {el.price * NumberOfItems}</Text>
-                      </Flex>
-                      <Spacer />
-                      <Flex justify={"center"}>
-                        <Button size="sm">PLACE ORDER</Button>
-                      </Flex>
-                    </Box>
-                  </Flex>
-                </Flex>
-              }) : (<Flex w={"100%"} h='100%' direction={"column"} align="center" justify="center" >
-                <Spacer />
-                <Box>
-                  <Image src="https://www.mirraw.com/assets/empty_cart-37c63834a5d3ec25486445fc32bf710ad0a569dff0cad08f85ac85c2044ba41a.png" width={["5xs", "4xs"]} />
-                </Box>
-                <Box textAlign={"center"} m="10px">
-                  <Text fontSize={"lg"} fontWeight="600">Cart is Empty</Text>
-                  <Text fontSize={"sm"}>Looks like you have no items in your shopping cart</Text>
-                </Box>
-                <Button onClick={onClose} bg="rgb(177, 31, 43)" color="white">
-                  Return to Shop
-                </Button>
-                <Spacer />
-              </Flex>)}
-
-
-
-              {/* Dont know what this is */}
-
-            </ModalBody>
-          </ModalContent>
-        </Modal>
       </Flex>
     </>
   );
