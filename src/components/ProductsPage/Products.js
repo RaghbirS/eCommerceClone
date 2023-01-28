@@ -28,30 +28,52 @@ export default function Products() {
   let [pageLimit, setPageLimit] = useState(0);
   let [proData, setProDta] = useState([]);
   let [loading, setLoading] = useState(false);
-  let {sortBasis,setSortBasis} = useContext(AuthContext)
+  let { sortBasis, setSortBasis, activeSearch, setActiveSearch, searchValue } =
+    useContext(AuthContext);
   let da = useParams();
   const FetchData = async (param) => {
     setLoading(true);
     let data;
     //
-    if(sortBasis=="Default") data = await axios.get(
-      `https://e-commerce-api-sncm.onrender.com/${param}?_page=${page}&_limit=35`
-    );
-    else if(sortBasis=="HighToLow") data = await axios.get(
-      `https://e-commerce-api-sncm.onrender.com/${param}?_sort=effective-price&_order=desc&_page=${page}&_limit=35`
-    );
-    else data = await axios.get(
-      `https://e-commerce-api-sncm.onrender.com/${param}?_sort=effective-price&_order=asc&_page=${page}&_limit=35`
-    );
+    if (activeSearch) {
+      if (sortBasis == "Default")
+      data = await axios.get(
+        `https://e-commerce-api-sncm.onrender.com/saree/?q=${searchValue}&_page=${page}&_limit=35`
+      );
+    else if (sortBasis == "HighToLow")
+      data = await axios.get(
+        `https://e-commerce-api-sncm.onrender.com/saree/?q=${searchValue}&_sort=effective-price&_order=desc&_page=${page}&_limit=35`
+      );
+    else
+      data = await axios.get(
+        `https://e-commerce-api-sncm.onrender.com/saree/?q=${searchValue}&_sort=effective-price&_order=asc&_page=${page}&_limit=35`
+      );
+      // data = await axios.get(`https://e-commerce-api-sncm.onrender.com/saree?q=${searchValue}&_page=${page}&_limit=35`);
+    } 
+    
+    else {
+      if (sortBasis == "Default")
+        data = await axios.get(
+          `https://e-commerce-api-sncm.onrender.com/${param}?_page=${page}&_limit=35`
+        );
+      else if (sortBasis == "HighToLow")
+        data = await axios.get(
+          `https://e-commerce-api-sncm.onrender.com/${param}?_sort=effective-price&_order=desc&_page=${page}&_limit=35`
+        );
+      else
+        data = await axios.get(
+          `https://e-commerce-api-sncm.onrender.com/${param}?_sort=effective-price&_order=asc&_page=${page}&_limit=35`
+        );
+    }
     setPageLimit(data.headers["x-total-count"]);
     setProDta(data.data);
     setLoading(false);
     window.scrollTo(0, 0);
-  }
+  };
 
   useEffect(() => {
     FetchData(da.pro);
-  }, [page,sortBasis,da.pro]);
+  }, [page, sortBasis, da.pro, searchValue]);
   return (
     <>
       <Flex justify="center" width="100vw" p="0 20px">
@@ -86,17 +108,27 @@ export default function Products() {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                <MenuItem onClick={()=>{
-                    setSortBasis("Default")
-                  }}>Default</MenuItem>
-                  <MenuItem onClick={()=>{
-                    setSortBasis("HighToLow")
-
-                  }}>High to Low</MenuItem>
-                  <MenuItem onClick={()=>{
-                    setSortBasis("LowToHigh")
-                    
-                  }}>Low to High</MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setSortBasis("Default");
+                    }}
+                  >
+                    Default
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setSortBasis("HighToLow");
+                    }}
+                  >
+                    High to Low
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setSortBasis("LowToHigh");
+                    }}
+                  >
+                    Low to High
+                  </MenuItem>
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
@@ -127,7 +159,8 @@ export default function Products() {
                 data["lazy src"] != "" &&
                 data["lazy src"] !=
                   "https://www.mirraw.com/assets/11-335ed79f82b843135faf5fb751a71911e4512e5999837641a2914b270f7e6935.png" &&
-                  data["lazy src"] != "https://assets0.mirraw.com/images/5827882/139-a_long.jpg?1518529004"
+                data["lazy src"] !=
+                  "https://assets0.mirraw.com/images/5827882/139-a_long.jpg?1518529004"
               ) {
                 return (
                   <ProductCard
@@ -143,7 +176,8 @@ export default function Products() {
                 data["lazy-custom src"] != "" &&
                 data["lazy-custom src"] !=
                   "https://www.mirraw.com/assets/11-335ed79f82b843135faf5fb751a71911e4512e5999837641a2914b270f7e6935.png" &&
-                  data["lazy-custom src"] != "https://assets0.mirraw.com/images/5827882/139-a_long.jpg?1518529004"
+                data["lazy-custom src"] !=
+                  "https://assets0.mirraw.com/images/5827882/139-a_long.jpg?1518529004"
               ) {
                 return (
                   <ProductCard

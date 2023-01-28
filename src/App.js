@@ -11,9 +11,11 @@ import BigProduct from './components/ProductsPage/bigProductPage';
 import { Box } from '@chakra-ui/react';
 import AlertCompo, { CustomAlert, SignInSuccessfull, UserExistsAlert, WrongEmail, WrongPassword } from './components/alertCompo/alertCompo';
 import Cart from './components/Frontpage/Cart/Cart';
+import { useContext } from 'react';
+import { AuthContext } from './components/AuthContext/context';
 
 function App() {
-
+  let {activeSearch, setActiveSearch} = useContext(AuthContext)
   return (
     <>
     <CustomAlert msgs={"User Account Succesfully Added"} status={"success"} />
@@ -25,6 +27,7 @@ function App() {
       <Navbar />
       <Box display={["block","block","none","none","none"]} w={"100vw"} h="100px"></Box>
       <Routes>
+      <Route path='/search' element={<Products />} />
         <Route path='/products/:pro' element={<Products />}></Route>
         <Route path='/signup' element={<SignupCard />}></Route>
         <Route path='/signin' element={<SigninCard />}></Route>
