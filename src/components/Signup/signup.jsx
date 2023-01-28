@@ -97,7 +97,7 @@ function isValidPassword(password) {
         conPass: conPass.current.value,
         cart:[]
       }
-      let data = await axios.get("https://e-commerce-api-sncm.onrender.com/users")
+      let data = await axios.get("https://festive-candle-fontina.glitch.me/shop")
 
       let users= data.data
 
@@ -109,7 +109,7 @@ function isValidPassword(password) {
         }
       });
          if (condition){
-          axios.post("https://e-commerce-api-sncm.onrender.com/users",user)
+          axios.post("https://festive-candle-fontina.glitch.me/shop",user)
         }
         
         setUserCreated(true)

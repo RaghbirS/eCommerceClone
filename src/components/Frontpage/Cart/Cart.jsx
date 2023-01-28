@@ -27,7 +27,7 @@ export default function Cart() {
       return
     }
     let data = await axios.get(
-      `https://e-commerce-api-sncm.onrender.com/users/${loginUserID.id}`
+      `https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`
     );
     let userData = data.data.cart;
     setCartItems(userData);
@@ -145,7 +145,7 @@ export const CartItem = (props) => {
     }
     cartItems[index].qty = +value;
     axios.patch(
-      `https://e-commerce-api-sncm.onrender.com/users/${loginUserID.id}`,
+      `https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`,
       {
         cart: cartItems,
       }
@@ -159,7 +159,6 @@ export const CartItem = (props) => {
       Totaltemp += Temp;
     }
     setTotal(Totaltemp);
-    console.log("hello")
   }, [newPrice, cartItems])
   return (
     <Flex
@@ -204,7 +203,7 @@ export const CartItem = (props) => {
             setCartLength((prev)=>prev-1);
             if(tempCart.length==0) setTotal(0)
             axios.patch(
-              `https://e-commerce-api-sncm.onrender.com/users/${loginUserID.id}`,
+              `https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`,
               {
                 cart: tempCart,
               }
@@ -232,7 +231,7 @@ export const CartItem = (props) => {
             setCartLength((prev)=>prev-1);
             if(tempCart.length==0) setTotal(0)
             axios.patch(
-              `https://e-commerce-api-sncm.onrender.com/users/${loginUserID.id}`,
+              `https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`,
               {
                 cart: tempCart,
               }

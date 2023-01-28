@@ -25,20 +25,20 @@ export default function Nav2() {
     }
 
     return (
-        <Flex id="mid" h="100px" justify="center" align="center" className={styles.fill}>
+        <Flex id="mid" h="100px" justify="center" align="center" className={styles.fill} >
             <Flex align="center" justify="space-between" w="95%">
             <DrawerExample />
                 <NavLink to="/" onClick={()=>{
                     setActiveSearch(false)
-                }}><Box><Image src="https://www.mirraw.com/assets/logo-red.png" display={["flex", "flex", "flex"]} w={["25%","50%","100%"]} minW={["100%","50%","100%"]} m="0 20%" /></Box></NavLink>
-                <Flex border="1px solid black" w="50%" display={["none", "none", "flex"]}>
+                }}><Box flexShrink="0"><Image src="https://www.mirraw.com/assets/logo-red.png"  display={["flex", "flex", "flex"]} w={["25%","50%","100%"]} minW={["50%","50%","100%"]} m="0 20%" /></Box></NavLink>
+                <Flex border="1px solid black" w="50%" display={["none", "none", "flex"]} flexShrink="0">
                     <Input ref={searchQuery} border="none" fontStyle="italic" placeholder="Search Something..." borderRadius="0" w="90%" onKeyDown={(e)=>{
                         if(e.key=="Enter"){
                             Search()
                             searchButton.current.click()
                         }
                     }}></Input>
-                    <NavLink ref={searchButton} to="/search" style={{width:"10%"}}>
+                    <NavLink ref={searchButton} to="/search" style={{width:"10%", border:"1px solid black"}}>
                     <Button _hover={{background:"#670b19"}} bg="#670b19" borderRadius="0" w="100%" onClick={()=>{
                         Search()
                     }}><LordIconSearch /></Button></NavLink>

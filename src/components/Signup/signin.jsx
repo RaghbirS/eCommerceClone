@@ -24,7 +24,7 @@ import { useRef, useContext } from 'react';
 import { AuthContext } from '../AuthContext/context';
   
 async function Id(name,func){
-  let data = await axios.get("https://e-commerce-api-sncm.onrender.com/users");
+  let data = await axios.get("https://festive-candle-fontina.glitch.me/shop");
   data.data.forEach(el => {
     if(el.email==name){
       let id = el.id;
@@ -43,7 +43,7 @@ async function Id(name,func){
     let password = useRef(null)
     
     async function checkUser(){
-      let data = await axios.get("https://e-commerce-api-sncm.onrender.com/users");
+      let data = await axios.get("https://festive-candle-fontina.glitch.me/shop");
       let users=data.data;
       let success = false;
       users.map(el=>{

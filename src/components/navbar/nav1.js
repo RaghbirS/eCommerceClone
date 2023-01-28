@@ -86,7 +86,7 @@ export function CartLog() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   async function get(userID) {
     if(!userID) return;
-    let data = await axios.get(`https://e-commerce-api-sncm.onrender.com/users/${userID}`);
+    let data = await axios.get(`https://festive-candle-fontina.glitch.me/shop/${userID}`);
     let apiCartData = data.data.cart;
     setCartLength(apiCartData.length)
     setCartItems(apiCartData)

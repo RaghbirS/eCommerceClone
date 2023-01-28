@@ -31,14 +31,14 @@ async function addToCart(userID, newItem, cartItems, setCartItems,setCartLength)
         if (tempCartItems[i].name == newItem.name) {
             tempCartItems[i].qty = tempCartItems[i].qty + 1;
             setCartItems(tempCartItems);
-            axios.patch(`https://e-commerce-api-sncm.onrender.com/users/${userID}`, {
+            axios.patch(`https://festive-candle-fontina.glitch.me/shop/${userID}`, {
                 cart: tempCartItems
             })
             return
         }
     }
     setCartItems([...tempCartItems, newItem]);
-    axios.patch(`https://e-commerce-api-sncm.onrender.com/users/${userID}`, {
+    axios.patch(`https://festive-candle-fontina.glitch.me/shop/${userID}`, {
         cart: [...tempCartItems, newItem]
     })
     setCartLength((prev) => prev + 1)
