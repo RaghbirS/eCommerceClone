@@ -7,8 +7,8 @@ let Names =["Saree", "Salwar", "Lehenga", "Kurti"]
 let Images2 = ["https://assets0.mirraw.com/tag_sliders/1364/e_main_m.jpg?1668169761","https://assets0.mirraw.com/tag_sliders/1365/f_main_m.jpg?1668169738","https://assets0.mirraw.com/tag_sliders/1366/gf_main_m.jpg?1668405134","https://assets0.mirraw.com/tag_sliders/1382/08_main_m.jpg?1668169385"]
 let Names2= ["Jewellery", "Kids Wear", "Mens Wear", "Home & Living"]
 
-let Routes = ["/saree","/SalwarKameez", "/Lehengas", "/kurtis"]
-let Routes2= ["/jewellary","/kids","/mens","/homeLiving"]
+let Routes = ["products/saree","products/SalwarKameez", "products/Lehengas", "products/kurtis"]
+let Routes2= ["products/jewellary","products/kids","products/mens","products/homeLiving"]
 export default function MobileCards(){
     return <>
     <Flex w="100%" display={["flex","flex","flex","none"]} m="5% 0">

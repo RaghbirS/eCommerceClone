@@ -36,7 +36,8 @@ let {LogOut} = useContext(AuthContext)
         onClick={onOpen}
         p="0 0 0 6px"
         ml="2%"
-        display={["flex", "flex", "none"]}
+        size={"sm"}
+        display={["flex", "flex","flex", "none"]}
       />
       <Drawer
         isOpen={isOpen}

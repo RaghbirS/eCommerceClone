@@ -12,7 +12,7 @@ export default function Nav2() {
         <Flex id="mid" h="100px" justify="center" align="center" className={styles.fill}>
             <Flex align="center" justify="space-between" w="95%">
             <DrawerExample />
-                <NavLink to="/"><Box><Image src="https://www.mirraw.com/assets/logo-red.png" display={["none", "flex", "flex"]} w={["25%","50%","100%"]} minW={["25%","50%","100%"]} m="0 20%" /></Box></NavLink>
+                <NavLink to="/"><Box><Image src="https://www.mirraw.com/assets/logo-red.png" display={["flex", "flex", "flex"]} w={["25%","50%","100%"]} minW={["100%","50%","100%"]} m="0 20%" /></Box></NavLink>
                 <Flex border="1px solid black" w="50%" display={["none", "none", "flex"]}>
                     <Input border="none" fontStyle="italic" placeholder="Search Something..." borderRadius="0" w="90%"></Input>
                     <Button _hover={{background:"#670b19"}} bg="#670b19" borderRadius="0" w="10%"><LordIconSearch /></Button>
