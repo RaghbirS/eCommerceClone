@@ -23,12 +23,14 @@ import { AuthContext } from '../AuthContext/context';
 import { useContext } from 'react';
   
   export default function SignupCard() {
-    let {setUserCreated, setUserExists} = useContext(AuthContext)
+    let {setUserCreated, setUserExists , setWrongEmail, setWrongPassword} = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
     let [isValid, setValid] = useState(false)
     let mail = useRef(null);
     let pass = useRef(null);
     let conPass = useRef(null);
+
+
 function isValidPassword(password) {
       // Minimum password length
       let minLength = 8;
@@ -72,15 +74,18 @@ function isValidPassword(password) {
    async function CreateUser(){
     let condition = true
     if(isValidEmail(mail.current.value) == false && (isValidPassword(pass.current.value)== false && pass.current.value != conPass.current.value))  {
-      alert("Check Your Email and Password Again!")
+      setWrongEmail(true)
+        setTimeout(()=>setWrongEmail(false),3000)
       return
     }
     else if(isValidEmail(mail.current.value) == false){
-      alert("Check you Email Again!")
+      setWrongEmail(true)
+        setTimeout(()=>setWrongEmail(false),3000)
       return
     } 
     else if(isValidPassword(pass.current.value)== false && pass.current.value != conPass.current.value){
-      alert("Use atleast One Special, Capital and Numerical Character")
+      setWrongPassword(true)
+        setTimeout(()=>setWrongPassword(false),3000)
       return
     } else{
       setValid(true)

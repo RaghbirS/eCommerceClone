@@ -33,3 +33,29 @@ export function UserExistsAlert(){
     <AlertTitle>User Already Exists! Please Login!</AlertTitle>
 </Alert>
 }
+
+export function WrongEmail(){
+    let {wrongEmail} = useContext(AuthContext)
+    return <Alert transition={"1s"} w={"25%"} position={"fixed"} top={"10px"} left={"37.5%"} opacity={wrongEmail==true?"100%":"0%"}  status="warning">
+    <AlertIcon />
+    <AlertTitle>Please Enter a Valid Email ID!</AlertTitle>
+</Alert>
+    
+}
+
+export function WrongPassword(){
+    let {wrongPassword} = useContext(AuthContext)
+    return <Alert transition={"1s"} w={"25%"} position={"fixed"} top={"10px"} left={"37.5%"} opacity={wrongPassword==true?"100%":"0%"}  status="warning">
+    <AlertIcon />
+    <AlertTitle>Password must contain atleast one Lowercase, Uppercase and one Special Character!</AlertTitle>
+</Alert>
+    
+}
+
+export function SignInSuccessfull(){
+    let {signInSuccessfull} = useContext(AuthContext)
+    return <Alert transition={"1s"} w={"25%"} position={"fixed"} top={"10px"} left={"37.5%"} opacity={signInSuccessfull==true?"100%":"0%"}  status="success">
+    <AlertIcon />
+    <AlertTitle>Logged In Successfully!</AlertTitle>
+</Alert>
+}

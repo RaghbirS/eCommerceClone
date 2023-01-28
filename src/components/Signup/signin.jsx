@@ -11,7 +11,6 @@ import {
     Button,
     Heading,
     Text,
-    useColorModeValue,
     Link,
     Divider,
     Image,
@@ -38,7 +37,7 @@ async function Id(name,func){
 
   export default function SigninCard() {
     const [showPassword, setShowPassword] = useState(false);
-    const {Login, state,setAlertVal} = useContext(AuthContext)
+    const {Login, state,setAlertVal, setSignInSuccessfull} = useContext(AuthContext)
     const {loginUserID,setLoginUserID} = useContext(AuthContext)
     let email = useRef(null)
     let password = useRef(null)
@@ -52,6 +51,8 @@ async function Id(name,func){
           Login();
           success = true;
           Id(email.current.value,setLoginUserID)
+          setSignInSuccessfull(true);
+      setTimeout(()=>setSignInSuccessfull(false),3000)
         }
       })
       if(success) return;

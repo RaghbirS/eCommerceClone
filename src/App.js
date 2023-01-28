@@ -9,7 +9,7 @@ import SigninCard from './components/Signup/signin';
 import FAQ from './components/Footer/FooterComponents/faq';
 import BigProduct from './components/ProductsPage/bigProductPage';
 import { Box } from '@chakra-ui/react';
-import AlertCompo, { CustomAlert, UserExistsAlert } from './components/alertCompo/alertCompo';
+import AlertCompo, { CustomAlert, SignInSuccessfull, UserExistsAlert, WrongEmail, WrongPassword } from './components/alertCompo/alertCompo';
 import Cart from './components/Frontpage/Cart/Cart';
 
 function App() {
@@ -19,6 +19,9 @@ function App() {
     <CustomAlert msgs={"User Account Succesfully Added"} status={"success"} />
     <UserExistsAlert />
     <AlertCompo/>
+    <WrongEmail />
+    <WrongPassword />
+    <SignInSuccessfull />
       <Navbar />
       <Box display={["block","block","none","none","none"]} w={"100vw"} h="100px"></Box>
       <Routes>
