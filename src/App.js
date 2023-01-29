@@ -13,6 +13,7 @@ import AlertCompo, { CustomAlert, SignInSuccessfull, UserExistsAlert, WrongEmail
 import Cart from './components/Frontpage/Cart/Cart';
 import { useContext } from 'react';
 import { AuthContext } from './components/AuthContext/context';
+import { SearchBar } from './components/navbar/nav2';
 
 function App() {
   let {activeSearch, setActiveSearch} = useContext(AuthContext)
@@ -26,6 +27,7 @@ function App() {
     <SignInSuccessfull />
       <Navbar />
       <Box display={["block","block","none","none","none"]} w={"100vw"} h="100px"></Box>
+      <SearchBar />
       <Routes>
       <Route path='/search' element={<Products />} />
         <Route path='/products/:pro' element={<Products />}></Route>

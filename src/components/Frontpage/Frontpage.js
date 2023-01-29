@@ -1,6 +1,7 @@
 
 import { Box } from "@chakra-ui/react"
 import Carousel from "../Features/Carousel/Carousel"
+import { SearchBar } from "../navbar/nav2"
 import {BigGrid} from "./BigPicGrid/BigGrid"
 import Cards from "./Cards Grid/Cards"
 import Expand from "./Expanding Section/expand"
@@ -20,3 +21,4 @@ export default function Frontpage() {
         </>
     )
 }
+
