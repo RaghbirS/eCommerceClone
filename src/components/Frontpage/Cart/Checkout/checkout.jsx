@@ -13,6 +13,9 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Image,
+  Divider,
+  Button,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useRef } from "react";
@@ -21,11 +24,9 @@ import { useState } from "react";
 export default function Checkout() {
   const [value, setValue] = useState("1");
 
-  useEffect(()=>{
+  useEffect(() => {}, [value]);
 
-  },[value])
-  
-//   console.log(PaymentMethod.current.value)
+  //   console.log(PaymentMethod.current.value)
   return (
     <Box
       display={["block", "block", "flex"]}
@@ -63,11 +64,7 @@ export default function Checkout() {
 
         {/* Payment Information */}
         <Text fontWeight={700}>Payment Information</Text>
-        <RadioGroup
-          onChange={setValue}
-          value={value}
-          w="100%"
-        >
+        <RadioGroup onChange={setValue} value={value} w="100%">
           <Flex direction="row" w="100%">
             <Box>
               <Radio value="1" display={"block"}>
@@ -84,51 +81,83 @@ export default function Checkout() {
           </Flex>
         </RadioGroup>
 
-        {value != 1? <Box w="100%">
+        {/* Conditional Payment Option */}
+        {value != 1 ? (
+          <Box w="100%">
             <Text>Enter Your UPI Address</Text>
-            <Input placeholder="Enter your UPI Address"/>
-        </Box> : 
-        <Box>
-        <Flex w="100%">
-          <Box>
-            <Text>Credit card number</Text>
-            <Input placeholder="Card number" />
+            <Input placeholder="Enter your UPI Address" />
           </Box>
-          <Spacer />
+        ) : (
           <Box>
-            <Text>Name on card</Text>
-            <Input placeholder="Card name" />
-          </Box>
-          <Spacer />
-        </Flex>
-        <Flex>
+            <Flex w="100%">
+              <Box>
+                <Text>Credit card number</Text>
+                <Input placeholder="Card number" />
+              </Box>
+              <Spacer />
+              <Box>
+                <Text>Name on card</Text>
+                <Input placeholder="Card name" />
+              </Box>
+              <Spacer />
+            </Flex>
+            <Flex>
+              <Box>
+                Expiry Date
+                <Flex>
+                  <NumberInput defaultValue={1} min={1} max={12}>
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                  <NumberInput defaultValue={23} min={23} max={60}>
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </Flex>
+              </Box>
+            </Flex>
             <Box>
-              Expiry Date
-              <Flex>
-                <NumberInput defaultValue={1} min={1} max={12}>
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-                <NumberInput defaultValue={23} min={23} max={60}>
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-              </Flex>
-            </Box>
-          </Flex>
-          <Box>
               CVV/CVC
               <Input placeholder="CVC" />
             </Box>
-        </Box>
-        }
-        
+          </Box>
+        )}
+      </VStack>
+      <Spacer />
+      <VStack w={"55%"} align={"flex-start"} p={"10px"} overflowY="scroll">
+        <Text fontWeight={700}>Order Summary</Text>
+        {/* Map each Item in this format */}
+        <Flex w={"100%"}>
+          <Box>
+            <Image
+              src="https://images.unsplash.com/photo-1602024242516-fbc9d4fda4b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+              w={"100px"}
+            />
+          </Box>
+          <Spacer />
+          {/* Name, price and Qty from Api */}
+            <Text fontWeight={600}>Bamboo Tan</Text>
+            <Spacer />
+            <Text>Qty: 1</Text>
+            <Spacer />
+            <Text fontWeight={600}> $199.00</Text>
+          <Spacer />
+        </Flex>
+        <Divider />
+        <Flex w={"100%"} p={"20px 0"}>
+            <Text fontSize={"lg"} fontWeight={"600"} >Order Total</Text>
+            <Spacer />
+            <Text fontSize={"lg"} fontWeight={"600"}> $589</Text>
+        </Flex>
+        <Flex w="100%">
+        <Button m={"auto"} variant={"outline"} color="white" bg="rgb(104, 12, 26)">Place Order</Button>
+        </Flex>
       </VStack>
     </Box>
   );
