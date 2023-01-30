@@ -1,3 +1,40 @@
+# About Our Project
+
+This Project is made for a purpose of making an E-Commerce website inspired by <a href= "https://www.mirraw.com/">Mirraw</a>. Using React.js and Chakra UI for styling.
+Unlike the inspirational site, this clone is fully responsive for all screen sizes.
+
+# Features
+This Clone is fully functional with all the basic features of an E-Commerce site which includes:
+Browsing Products, 
+Creating new account, 
+Logging in to the account, 
+Adding products to the cart, 
+changing prices according to the quantity, 
+checkout page and much more. 
+
+# Deployed Link
+
+
+# Technology Used
+
+1) React.js
+2) React Router Dom
+3) Chakra UI
+4) Node.js
+5) NPM modules
+6) Axios
+
+# Authors
+
+Raghbir Singh
+LinkedIn :
+Github :
+
+Ishan Yadav
+LinkedIn :
+Github :
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
