@@ -30,10 +30,11 @@ export default function Checkout() {
   return (
     <Box
       display={["block", "block", "flex"]}
-      p="10px"
+      p="20px"
       w={["80%"]}
-      m="auto"
+      m=" 3% auto"
       bg="white"
+      boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
     >
       <VStack align={"flex-start"}>
         <Text fontWeight={"700"}>Shipping Information</Text>
@@ -70,13 +71,14 @@ export default function Checkout() {
               <Radio value="1" display={"block"}>
                 Credit Card
               </Radio>
-              Pay with credit card via Stripe
+              <Text fontSize={"xs"}>Pay with credit card via Stripe</Text>
             </Box>
+            <Spacer />
             <Box>
               <Radio value="2" display={"block"}>
                 UPI
               </Radio>
-              Pay with any UPI app
+              <Text fontSize={"xs"}>Pay with any UPI app</Text>
             </Box>
           </Flex>
         </RadioGroup>
@@ -130,7 +132,7 @@ export default function Checkout() {
         )}
       </VStack>
       <Spacer />
-      <VStack w={"55%"} align={"flex-start"} p={"10px"} overflowY="scroll">
+      <VStack w={"full"} align={"flex-start"} p={"10px"} overflowY="scroll">
         <Text fontWeight={700}>Order Summary</Text>
         {/* Map each Item in this format */}
         <Flex w={"100%"}>
