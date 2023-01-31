@@ -145,7 +145,7 @@ export default function Checkout() {
         {/* Map each Item in this format */}
         <Box maxH={"600px"} overflowY="scroll" w="full" pr={"10px"}>
         {cartItems.map((el,i)=>{
-          return <Flex w={"100%"} key={i} justify={"center"} align={"center"}>
+          return <Box display={["block","block","flex"]} mb={"20px"} w={"100%"} key={i} justify={"center"} align={"center"}>
           <Box>
             <Image
               src={el.img}
@@ -154,13 +154,13 @@ export default function Checkout() {
           </Box>
           <Spacer />
           {/* Name, price and Qty from Api */}
-            <Text fontWeight={600} maxW={"25%"}>{el.name}</Text>
+            <Text fontWeight={600} maxW={["100%","75%","50%","25%"]}>{el.name}</Text>
             <Spacer />
             <Text>Qty: {el.qty}</Text>
             {/* <Spacer /> */}
             <Text fontWeight={600} ml={"5%"}>${el.price * el.qty}</Text>
           {/* <Spacer /> */}
-        </Flex>
+        </Box>
         })}
         </Box>
         <Divider />

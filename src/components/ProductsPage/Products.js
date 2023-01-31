@@ -28,7 +28,7 @@ export default function Products() {
   let [pageLimit, setPageLimit] = useState(0);
   let [proData, setProDta] = useState([]);
   let [loading, setLoading] = useState(false);
-  let { sortBasis, setSortBasis, activeSearch, setActiveSearch, searchValue } =
+  let { sortBasis, setSortBasis, activeSearch, setActiveSearch, searchValue,searchProductId,setSearchProductId } =
     useContext(AuthContext);
   let da = useParams();
   const FetchData = async (param) => {
@@ -164,12 +164,13 @@ export default function Products() {
               ) {
                 return (
                   <ProductCard
-                    loop={`/products/${da.pro}/${data["listing-title"]}/${data.id}`}
+                    loop={`/products/${da.pro || "allproducts"}/${data["listing-title"]}/${data.id}`}
                     key={data.id}
                     title={data["listing-title"]}
                     img={data["lazy src"]}
                     price={data["effective-price"]}
                     discount={data["red-discount-percentage"]}
+                    
                   />
                 );
               } else if (
@@ -181,7 +182,7 @@ export default function Products() {
               ) {
                 return (
                   <ProductCard
-                    loop={`/products/${da.pro}/${data["listing-title"]}/${data.id}`}
+                    loop={`/products/${da.pro || "allproducts"}/${data["listing-title"]}/${data.id}`}
                     key={data.id}
                     title={data["listing-title"]}
                     img={data["lazy-custom src"]}

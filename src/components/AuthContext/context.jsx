@@ -19,7 +19,7 @@ export default function ContextProvider({children}){
     let [total, setTotal] = useState(0)
     let [searchValue, setSearchValue] = useState("")
     let [activeSearch, setActiveSearch] = useState(false)
-    let [checkoutTotal, setCheckoutTotal]= useState(total)
+    let [checkoutTotal, setCheckoutTotal]= useState(total);
     function Login(){
         setState(true);
         localStorage.setItem("loginStatus",JSON.stringify(true))
