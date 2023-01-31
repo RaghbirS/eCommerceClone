@@ -20,7 +20,7 @@ import { CartProductMeta } from "./CartProductMeta";
 import { PriceTag } from "./PriceTag";
 
 export default function Cart() {
-  let { loginUserID, total, setTotal, cartItems, setCartItems } = useContext(AuthContext);
+  let { loginUserID, total, setTotal, setCheckoutTotal,cartItems, setCartItems } = useContext(AuthContext);
   // let [cartItems, setCartItems] = useState([]);
   async function getData() {
     if (loginUserID?.id == undefined) {
@@ -40,6 +40,7 @@ export default function Cart() {
       Totaltemp += Temp;
     }
     setTotal(Totaltemp);
+    
   }, []);
   return (
     <Box

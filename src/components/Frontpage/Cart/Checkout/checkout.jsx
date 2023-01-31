@@ -17,16 +17,24 @@ import {
   Divider,
   Button,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
+import { AuthContext } from "../../../AuthContext/context";
 
 export default function Checkout() {
+  let {cartItems, total,checkoutTotal, setCheckoutTotal} = useContext(AuthContext)
   const [value, setValue] = useState("1");
 
-  useEffect(() => {}, [value]);
+  let finalTotal =0;
+  cartItems.forEach((el,i)=>{
+    finalTotal +=el.price * el.qty
+  })
+  setCheckoutTotal(finalTotal)
+  useEffect(() => {
 
-  //   console.log(PaymentMethod.current.value)
+  }, [value, total, setCheckoutTotal]);
+
   return (
     <Box
       display={["block", "block", "flex"]}
@@ -132,35 +140,41 @@ export default function Checkout() {
         )}
       </VStack>
       <Spacer />
-      <VStack w={"full"} align={"flex-start"} p={"10px"} overflowY="scroll">
+      <VStack w={"full"} align={"flex-start"} p={"20px"} >
         <Text fontWeight={700}>Order Summary</Text>
         {/* Map each Item in this format */}
-        <Flex w={"100%"}>
+        <Box maxH={"600px"} overflowY="scroll" w="full" pr={"10px"}>
+        {cartItems.map((el,i)=>{
+          return <Flex w={"100%"} key={i} justify={"center"} align={"center"}>
           <Box>
             <Image
-              src="https://images.unsplash.com/photo-1602024242516-fbc9d4fda4b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+              src={el.img}
               w={"100px"}
             />
           </Box>
           <Spacer />
           {/* Name, price and Qty from Api */}
-            <Text fontWeight={600}>Bamboo Tan</Text>
+            <Text fontWeight={600} maxW={"25%"}>{el.name}</Text>
             <Spacer />
-            <Text>Qty: 1</Text>
-            <Spacer />
-            <Text fontWeight={600}> $199.00</Text>
-          <Spacer />
+            <Text>Qty: {el.qty}</Text>
+            {/* <Spacer /> */}
+            <Text fontWeight={600} ml={"5%"}>${el.price * el.qty}</Text>
+          {/* <Spacer /> */}
         </Flex>
+        })}
+        </Box>
         <Divider />
         <Flex w={"100%"} p={"20px 0"}>
             <Text fontSize={"lg"} fontWeight={"600"} >Order Total</Text>
             <Spacer />
-            <Text fontSize={"lg"} fontWeight={"600"}> $589</Text>
+            <Text fontSize={"lg"} fontWeight={"600"}>${finalTotal}</Text>
         </Flex>
         <Flex w="100%">
         <Button m={"auto"} variant={"outline"} color="white" bg="rgb(104, 12, 26)">Place Order</Button>
         </Flex>
       </VStack>
+      
     </Box>
+    
   );
 }
