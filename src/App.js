@@ -16,6 +16,7 @@ import { AuthContext } from './components/AuthContext/context';
 import { SearchBar } from './components/navbar/nav2';
 import Checkout from './components/Frontpage/Cart/Checkout/checkout';
 import axios from 'axios';
+import Admin from './components/admin/mainAdminPage';
 
 function App() {
   let { isAdmin, setIsAdmin, loginUserID } = useContext(AuthContext);
@@ -49,7 +50,7 @@ function App() {
         <Route path='/faq' element={<FAQ />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
         <Route path='/checkout' element={<Checkout />}></Route>
-        <Route path='/admin' element={isAdmin ? "adminPage" : "Authorisation Required"}></Route>
+        <Route path='/admin' element={isAdmin ? <Admin /> : "Authorisation Required"}></Route>
       </Routes>
       <Footer />
       <NavLink style={isAdmin?{width:"50px",height:"30px",position:"fixed",bottom:"5%",left:"30px"}:{display:"none"}} to="/admin">

@@ -140,7 +140,7 @@ export default function Checkout() {
               prevOrders:[...data.prevOrders,obj]
             });
           }
-          axios.post("https://e-commerce-api-sncm.onrender.com/orders",obj)
+          axios.post("https://purple-fog-period.glitch.me/users",obj)
           console.log(obj)
         }} m={"auto"} variant={"outline"} color="white" bg="rgb(104, 12, 26)">Place Order</Button></NavLink>
         </Flex>
