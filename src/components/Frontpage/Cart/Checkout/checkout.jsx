@@ -25,15 +25,20 @@ import { AuthContext } from "../../../AuthContext/context";
 export default function Checkout() {
   let {cartItems, total,checkoutTotal, setCheckoutTotal} = useContext(AuthContext)
   const [value, setValue] = useState("1");
-
-  let finalTotal =0;
-  cartItems.forEach((el,i)=>{
-    finalTotal +=el.price * el.qty
-  })
-  setCheckoutTotal(finalTotal)
+  const fullNameRef = useRef(null)
+  const streetAddressRef = useRef(null)
+  const zipCodeRef = useRef(null)
+  const cityRef = useRef(null)
+  const emailAddressRef = useRef(null)
+  
   useEffect(() => {
-
-  }, [value, total, setCheckoutTotal]);
+    let finalTotal = 0;
+    cartItems.forEach((el,i)=>{
+      finalTotal +=el.price * el.qty
+    })
+    setCheckoutTotal(finalTotal);
+    console.log(cartItems)
+  }, [cartItems]);
 
   return (
     <Box
@@ -49,25 +54,25 @@ export default function Checkout() {
         <Box>
           <Box w="100%">
             <Text fontWeight={"500"}>Full Name</Text>
-            <Input placeholder="Your Full Name" />
+            <Input ref={fullNameRef} placeholder="Your Full Name" />
           </Box>
           <Box w="100%">
             <Text fontWeight={"500"}>Street Address</Text>
-            <Input placeholder="123 Example Street" />
+            <Input ref={streetAddressRef} placeholder="123 Example Street" />
           </Box>
           <Flex w="100%">
             <Box>
               <Text fontWeight={"500"}>Zip Code</Text>
-              <Input placeholder="Zip Code" />
+              <Input ref={zipCodeRef} placeholder="Zip Code" />
             </Box>
             <Box>
               <Text fontWeight={"500"}>City</Text>
-              <Input placeholder="City" />
+              <Input ref={cityRef} placeholder="City" />
             </Box>
           </Flex>
           <Box w="100%">
             <Text fontWeight={"500"}>Email Address</Text>
-            <Input placeholder="you@example.com" />
+            <Input ref={emailAddressRef} placeholder="you@example.com" />
           </Box>
         </Box>
 
@@ -167,10 +172,20 @@ export default function Checkout() {
         <Flex w={"100%"} p={"20px 0"}>
             <Text fontSize={"lg"} fontWeight={"600"} >Order Total</Text>
             <Spacer />
-            <Text fontSize={"lg"} fontWeight={"600"}>${finalTotal}</Text>
+            <Text fontSize={"lg"} fontWeight={"600"}>${checkoutTotal}</Text>
         </Flex>
         <Flex w="100%">
-        <Button m={"auto"} variant={"outline"} color="white" bg="rgb(104, 12, 26)">Place Order</Button>
+        <Button onClick={()=>{
+          let obj = {
+            fullName:fullNameRef.current.value,
+            streetAddress:streetAddressRef.current.value,
+            zipCode:zipCodeRef.current.value,
+            city:cityRef.current.value,
+            emailAddress:emailAddressRef.current.value,
+            orderedProducts:[...cartItems]
+          }
+          console.log(obj)
+        }} m={"auto"} variant={"outline"} color="white" bg="rgb(104, 12, 26)">Place Order</Button>
         </Flex>
       </VStack>
       
