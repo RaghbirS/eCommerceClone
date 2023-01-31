@@ -1,5 +1,6 @@
 
 import { Box } from "@chakra-ui/react"
+import axios from "axios"
 import Carousel from "../Features/Carousel/Carousel"
 import { SearchBar } from "../navbar/nav2"
 import {BigGrid} from "./BigPicGrid/BigGrid"

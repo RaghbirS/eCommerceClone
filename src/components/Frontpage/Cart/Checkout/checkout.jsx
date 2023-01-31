@@ -6,24 +6,20 @@ import {
   VStack,
   RadioGroup,
   Radio,
-  Stack,
   Spacer,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
   Image,
   Divider,
   Button,
 } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 import { useContext, useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../../AuthContext/context";
 
 export default function Checkout() {
-  let {cartItems, total,checkoutTotal, setCheckoutTotal} = useContext(AuthContext)
+  let {cartItems, loginUserID, total,checkoutTotal, setCheckoutTotal} = useContext(AuthContext)
   const [value, setValue] = useState("1");
   const fullNameRef = useRef(null)
   const streetAddressRef = useRef(null)
@@ -75,74 +71,20 @@ export default function Checkout() {
             <Input ref={emailAddressRef} placeholder="you@example.com" />
           </Box>
         </Box>
-
         {/* Payment Information */}
         <Text fontWeight={700}>Payment Information</Text>
         <RadioGroup onChange={setValue} value={value} w="100%">
           <Flex direction="row" w="100%">
             <Box>
               <Radio value="1" display={"block"}>
-                Credit Card
+                Cash on Delivery {"(COD)"}
               </Radio>
-              <Text fontSize={"xs"}>Pay with credit card via Stripe</Text>
-            </Box>
-            <Spacer />
-            <Box>
-              <Radio value="2" display={"block"}>
-                UPI
-              </Radio>
-              <Text fontSize={"xs"}>Pay with any UPI app</Text>
+              <Text fontSize={"xs"}>Pay via Cash on Delivery</Text>
             </Box>
           </Flex>
         </RadioGroup>
 
-        {/* Conditional Payment Option */}
-        {value != 1 ? (
-          <Box w="100%">
-            <Text>Enter Your UPI Address</Text>
-            <Input placeholder="Enter your UPI Address" />
-          </Box>
-        ) : (
-          <Box>
-            <Flex w="100%">
-              <Box>
-                <Text>Credit card number</Text>
-                <Input placeholder="Card number" />
-              </Box>
-              <Spacer />
-              <Box>
-                <Text>Name on card</Text>
-                <Input placeholder="Card name" />
-              </Box>
-              <Spacer />
-            </Flex>
-            <Flex>
-              <Box>
-                Expiry Date
-                <Flex>
-                  <NumberInput defaultValue={1} min={1} max={12}>
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                  <NumberInput defaultValue={23} min={23} max={60}>
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                </Flex>
-              </Box>
-            </Flex>
-            <Box>
-              CVV/CVC
-              <Input placeholder="CVC" />
-            </Box>
-          </Box>
-        )}
+       
       </VStack>
       <Spacer />
       <VStack w={"full"} align={"flex-start"} p={"20px"} >
@@ -175,17 +117,32 @@ export default function Checkout() {
             <Text fontSize={"lg"} fontWeight={"600"}>${checkoutTotal}</Text>
         </Flex>
         <Flex w="100%">
-        <Button onClick={()=>{
+        <NavLink to="/"><Button onClick={async ()=>{
           let obj = {
             fullName:fullNameRef.current.value,
             streetAddress:streetAddressRef.current.value,
             zipCode:zipCodeRef.current.value,
             city:cityRef.current.value,
             emailAddress:emailAddressRef.current.value,
-            orderedProducts:[...cartItems]
+            orderedProducts:[...cartItems],
+            paymentMode:"Cash on Delivery ( COD )"
           }
+          
+          let data = await axios.get(`https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`);
+          data = data.data;
+          if(!data.prevOrders){
+            axios.patch(`https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`,{
+              prevOrders:[obj]
+            });
+          }
+          else{
+            axios.patch(`https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`,{
+              prevOrders:[...data.prevOrders,obj]
+            });
+          }
+          axios.post("https://e-commerce-api-sncm.onrender.com/orders",obj)
           console.log(obj)
-        }} m={"auto"} variant={"outline"} color="white" bg="rgb(104, 12, 26)">Place Order</Button>
+        }} m={"auto"} variant={"outline"} color="white" bg="rgb(104, 12, 26)">Place Order</Button></NavLink>
         </Flex>
       </VStack>
       
