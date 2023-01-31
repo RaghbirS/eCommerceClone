@@ -14,6 +14,7 @@ import Cart from './components/Frontpage/Cart/Cart';
 import { useContext } from 'react';
 import { AuthContext } from './components/AuthContext/context';
 import { SearchBar } from './components/navbar/nav2';
+import Checkout from './components/Frontpage/Cart/Checkout/checkout';
 
 function App() {
   let {activeSearch, setActiveSearch} = useContext(AuthContext)
@@ -37,6 +38,7 @@ function App() {
         <Route path='/' element={<Frontpage />}></Route>
         <Route path='/faq' element={<FAQ />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
+        <Route path='/checkout' element={<Checkout />}></Route>
       </Routes>
       <Footer />
     </>

@@ -38,15 +38,15 @@ export default function Products() {
     if (activeSearch) {
       if (sortBasis == "Default")
       data = await axios.get(
-        `https://e-commerce-api-sncm.onrender.com/saree/?q=${searchValue}&_page=${page}&_limit=35`
+        `https://e-commerce-api-sncm.onrender.com/allproducts/?q=${searchValue}&_page=${page}&_limit=35`
       );
     else if (sortBasis == "HighToLow")
       data = await axios.get(
-        `https://e-commerce-api-sncm.onrender.com/saree/?q=${searchValue}&_sort=effective-price&_order=desc&_page=${page}&_limit=35`
+        `https://e-commerce-api-sncm.onrender.com/allproducts/?q=${searchValue}&_sort=effective-price&_order=desc&_page=${page}&_limit=35`
       );
     else
       data = await axios.get(
-        `https://e-commerce-api-sncm.onrender.com/saree/?q=${searchValue}&_sort=effective-price&_order=asc&_page=${page}&_limit=35`
+        `https://e-commerce-api-sncm.onrender.com/allproducts/?q=${searchValue}&_sort=effective-price&_order=asc&_page=${page}&_limit=35`
       );
       // data = await axios.get(`https://e-commerce-api-sncm.onrender.com/saree?q=${searchValue}&_page=${page}&_limit=35`);
     } 
