@@ -17,16 +17,18 @@ import { SearchBar } from './components/navbar/nav2';
 import Checkout from './components/Frontpage/Cart/Checkout/checkout';
 import axios from 'axios';
 import Admin from './components/admin/mainAdminPage';
+import AuthError from './components/admin/authError';
 
 function App() {
   let { isAdmin, setIsAdmin, loginUserID } = useContext(AuthContext);
   useEffect(() => {
-    (async function adminCheck() {
-      let data = await axios.get(`https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`)
-      data = data.data;
-      setIsAdmin(!!data.isAdmin);
-      console.log(!!data.isAdmin)
-    })()
+    if (loginUserID.id) {
+      (async function adminCheck() {
+        let data = await axios.get(`https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`)
+        data = data.data;
+        setIsAdmin(!!data.isAdmin);
+      })()
+    }
   }, [isAdmin,loginUserID.id])
 
   return (
@@ -50,7 +52,7 @@ function App() {
         <Route path='/faq' element={<FAQ />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
         <Route path='/checkout' element={<Checkout />}></Route>
-        <Route path='/admin' element={isAdmin ? <Admin /> : "Authorisation Required"}></Route>
+        <Route path='/admin' element={isAdmin ? <Admin /> : <AuthError />}></Route>
       </Routes>
       <Footer />
       <NavLink style={isAdmin?{width:"50px",height:"30px",position:"fixed",bottom:"5%",left:"30px"}:{display:"none"}} to="/admin">

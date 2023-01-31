@@ -48,20 +48,19 @@ export default function Admin() {
           </TabList>
           <TabPanels
             textAlign={"center"}
-            display={"flex"}
+            display={["block","flex","flex"]}
             w={"full"}
             overflowY={"scroll"}
           >
-            {console.log(data)}
             <TabPanel h="100%" display={"block"} w={"100%"}>
               {data.map((el, j) => {
                 return (
-                  <Flex key={j} w="100%">
-                    <Box w={"30%"} border={"1px solid grey"}>
-                      <Text>Name: Example Name</Text>
-                      <Text>Address: Example Address</Text>
-                      <Text>City: Example City</Text>
-                      <Text>Email ID: Example Email</Text>
+                  <Box display={["block","flex","flex"]} key={j} w="100%" mb={["10%","7%","3%"]}>
+                    <Box overflowY={"scroll"} maxH={["130px", "full"]} w={["100%","60%","30%"]} border={"1px solid grey"} textAlign="left" p="10px">
+                      <Text>Name: {el.fullName}</Text>
+                      <Text>Address: {el.streetAddress} </Text>
+                      <Text>City: {el.city}</Text>
+                      <Text>Email ID: {el.emailAddress} </Text>
                     </Box>
                     <Flex
                       overflowX={"scroll"}
@@ -72,10 +71,9 @@ export default function Admin() {
                     >
                       {el.orderedProducts.map((prod, i) => {
                         return (
-                          <>
-                            <Card minW="30%" key={i}>
+                            <Card minW={["90%","50%","30%"]} key={i}>
                               <CardBody >
-                                <Box maxW={"100px"} h={"80%"} m="auto" 
+                                <Box maxW={"100px"} h={["auto","80%"]} m="auto" 
                                   overflow={"hidden"}>
                                 <Image
                                   src={prod.img}
@@ -85,16 +83,13 @@ export default function Admin() {
                                   m="auto"
                                 />
                                 </Box>
-                                {/* <Stack mt="6" spacing="3"> */}
-                                  <Text size="md" maxW={"100%"}>{prod.name}</Text>
-                                {/* </Stack> */}
+                                  <Text fontSize={["xs","sm","md"]} maxW={"100%"}>{prod.name}</Text>
                               </CardBody>
                             </Card>
-                          </>
                         );
                       })}
                     </Flex>
-                  </Flex>
+                  </Box>
                 );
               })}
             </TabPanel>
