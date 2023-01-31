@@ -50,7 +50,7 @@ import { AuthContext } from '../../AuthContext/context'
             </Text>
           </Flex>
         </Stack>
-        <Button colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
+        <Button onClick={()=>console.log(total)} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
           Checkout
         </Button>
       </Stack>
