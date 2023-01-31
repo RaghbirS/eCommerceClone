@@ -32,7 +32,6 @@ export default function Admin() {
       setData(temp.data);
     })();
   }, []);
-  console.log(data);
   return (
     <Box>
       <Box>
@@ -44,7 +43,7 @@ export default function Admin() {
         <Tabs variant="enclosed" orientation={"vertical"} w={"100%"}>
           <TabList mb="1em" w={"30%"}>
             <Tab>Orders</Tab>
-            <Tab>Kuch Aur</Tab>
+            <Tab>Others</Tab>
           </TabList>
           <TabPanels
             textAlign={"center"}
@@ -57,10 +56,10 @@ export default function Admin() {
                 return (
                   <Box display={["block","flex","flex"]} key={j} w="100%" mb={["10%","7%","3%"]}>
                     <Box overflowY={"scroll"} maxH={["130px", "full"]} w={["100%","60%","30%"]} border={"1px solid grey"} textAlign="left" p="10px">
-                      <Text>Name: {el.fullName}</Text>
-                      <Text>Address: {el.streetAddress} </Text>
-                      <Text>City: {el.city}</Text>
-                      <Text>Email ID: {el.emailAddress} </Text>
+                      <Flex fontWeight={700} >Name:<Text ml={"5px"} fontWeight={400}> {el.fullName}</Text></Flex>
+                      <Flex fontWeight={700} >Address:<Text ml={"5px"} fontWeight={400}> {el.streetAddress}</Text></Flex>
+                      <Flex fontWeight={700} >City:<Text ml={"5px"} fontWeight={400}> {el.city}</Text></Flex>
+                      <Flex fontWeight={700} >Email:<Text ml={"5px"} fontWeight={400}> {el.emailAddress}</Text></Flex>
                     </Box>
                     <Flex
                       overflowX={"scroll"}
@@ -92,6 +91,11 @@ export default function Admin() {
                   </Box>
                 );
               })}
+            </TabPanel>
+            <TabPanel h="100%" display={"block"} w={"100%"}>
+            <Box display={["block","flex","flex"]} w="100%" mb={["10%","7%","3%"]} >
+                <Text textAlign="center" w={"100%"} fontSize="2xl" fontWeight={700}>In Future</Text>
+            </Box>
             </TabPanel>
           </TabPanels>
         </Tabs>
