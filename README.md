@@ -8,11 +8,14 @@ This Clone is fully functional with all the basic features of an E-Commerce site
 Browsing Products, 
 Creating new account, 
 Logging in to the account, 
-Adding products to the cart, 
+Adding products to the cart,
+Checkout Page,
+Admin Page to see all ordered products (special access only),
 changing prices according to the quantity, 
 checkout page and much more. 
 
 # Deployed Link
+https://e-commerce-clone-b5604.web.app/
 
 
 # Technology Used
