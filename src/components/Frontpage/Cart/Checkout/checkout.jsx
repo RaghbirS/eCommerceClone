@@ -19,7 +19,7 @@ import { useState } from "react";
 import { AuthContext } from "../../../AuthContext/context";
 
 export default function Checkout() {
-  let {cartItems, loginUserID, total,checkoutTotal, setCheckoutTotal} = useContext(AuthContext)
+  let {cartItems, setCartLength, setCartItems, loginUserID, total,checkoutTotal, setCheckoutTotal} = useContext(AuthContext)
   const [value, setValue] = useState("1");
   const fullNameRef = useRef(null)
   const streetAddressRef = useRef(null)
@@ -141,7 +141,11 @@ export default function Checkout() {
             });
           }
           axios.post("https://purple-fog-period.glitch.me/users",obj)
-          console.log(obj)
+          axios.patch(`https://festive-candle-fontina.glitch.me/shop/${loginUserID.id}`,{
+            cart:[]
+          })
+          setCartItems([]);
+          setCartLength(0)
         }} m={"auto"} variant={"outline"} color="white" bg="rgb(104, 12, 26)">Place Order</Button></NavLink>
         </Flex>
       </VStack>
