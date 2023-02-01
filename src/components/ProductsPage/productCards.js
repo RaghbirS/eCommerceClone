@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 
 export default function ProductCard(props) {
     let data = props.loop;
-    console.log(data)
     return (
         <NavLink to={data}>
             <Card _hover={{ boxShadow: "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px", cursor: "pointer" }}>

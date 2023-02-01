@@ -33,7 +33,6 @@ export default function Checkout() {
       finalTotal +=el.price * el.qty
     })
     setCheckoutTotal(finalTotal);
-    console.log(cartItems)
   }, [cartItems]);
 
   return (
