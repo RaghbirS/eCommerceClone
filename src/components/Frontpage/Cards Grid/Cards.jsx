@@ -1,29 +1,18 @@
-import { Card, Image, Stack, Button, CardBody,  Grid, GridItem } from '@chakra-ui/react'
+import { Card, Image, Stack, Button, CardBody,  Grid, GridItem, Link } from '@chakra-ui/react'
 import Styles from "./Cards.module.css"
 
 
-let cardImgs=["https://assets0.mirraw.com/frontpages/12979/rtru_main_webp.webp?1673937576", 
-"https://assets0.mirraw.com/frontpages/12980/dfg_main_webp.webp?1673937552", 
-"https://assets0.mirraw.com/frontpages/12981/sdfs_%282%29_main_webp.webp?1673937513",
- "https://assets0.mirraw.com/frontpages/12982/yrt_main_webp.webp?1673937529",
-  "https://assets0.mirraw.com/frontpages/12983/dfdsf_main_webp.webp?1673937489", 
-  "https://assets0.mirraw.com/frontpages/12984/dfsdfsdf_main_webp.webp?1673937460",
-"https://assets0.mirraw.com/frontpages/12985/sdfs_main_webp.webp?1673937446", 
-"https://assets0.mirraw.com/frontpages/12986/dewe_main_webp.webp?1673937429", 
-"https://assets0.mirraw.com/frontpages/12987/dew_main_webp.webp?1673937417", 
-"https://assets0.mirraw.com/frontpages/12988/fds_main_webp.webp?1673937399", 
-"https://assets0.mirraw.com/frontpages/12989/se_main_webp.webp?1673937343", 
-"https://assets0.mirraw.com/frontpages/12990/df_main_webp.webp?1673937329",
-"https://assets0.mirraw.com/frontpages/12991/rte_main_webp.webp?1673937313",
-"https://assets0.mirraw.com/frontpages/12992/tr_main_webp.webp?1673937287",
-"https://assets0.mirraw.com/frontpages/12993/ds_main_webp.webp?1673937270",
-"https://assets0.mirraw.com/frontpages/12994/fd_main_webp.webp?1673937242"
+let cardImgs=["https://assets0.mirraw.com/tag_sliders/1360/j_main_m.jpg?1668169780","https://assets0.mirraw.com/tag_sliders/1361/rt_main_m.jpg?1668405095","https://assets0.mirraw.com/tag_sliders/1362/lk_main_m.jpg?1668405003","https://assets0.mirraw.com/tag_sliders/1363/io_main_m.jpg?1668405063","https://assets0.mirraw.com/tag_sliders/1364/e_main_m.jpg?1668169761","https://assets0.mirraw.com/tag_sliders/1365/f_main_m.jpg?1668169738","https://assets0.mirraw.com/tag_sliders/1366/gf_main_m.jpg?1668405134","https://assets0.mirraw.com/tag_sliders/1382/08_main_m.jpg?1668169385"
 ]
-let cardImgsTitle=["Tops", "Tunics", "Dresses", "Dress Material", "Anklets", "Bangles", "Maang Tikka", "Kamarbandh", "Ecraft INDIA", "Home & Living", "Wardrobe Organizers", "Jewellery Boxes", "Prestitched Sarees", "Ruffle Sarees", "Stylee lifestyle", "Plus Size Kurtis"]
+let cardImgsTitle=["Saree","Salwar","Lehenga","Kurti","Jewellery","Kids Wear","Mens Wear","Home & Living"]
+
+let links = ["products/saree","products/SalwarKameez","products/Lehengas","products/kurtis","products/jewellary","products/kids","products/mens","products/homeLiving","products/saree","products/SalwarKameez","products/Lehengas","products/kurtis","products/jewellary","products/kids","products/mens","products/homeLiving"]
 export default function Cards(){
     return  <Grid templateColumns={["repeat(2, 1fr)", "repeat(2, 1fr)", "repeat(4, 1fr)"]} gap={6} w="100%" m="auto">
     {cardImgs.map((pics,i)=>{
-        return <GridItem w='100%' h="auto" key={i} overflow="hidden"><Card w='100%'>
+        return <GridItem w='100%' h="auto" key={i} overflow="hidden">
+        <Link href={links[i]} >
+        <Card w='100%'>
     <CardBody className={Styles.cardBody}>
       <Image
         src={pics}
@@ -39,7 +28,9 @@ export default function Cards(){
       </Stack>
         
     </CardBody>
-  </Card> </GridItem>
+  </Card> 
+        </Link>
+  </GridItem>
     })}
   </Grid>
 }
